@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1083642242666",
+    "firebase_url": "https://ateducom2018-213017.firebaseio.com",
+    "project_id": "ateducom2018-213017",
+    "storage_bucket": "ateducom2018-213017.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1083642242666:android:42d061a95542014c",
+        "android_client_info": {
+          "package_name": "yellow7918.ajou.ac.janggi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1083642242666-fmqc89pfo78kcg4qpblkkdvaeoe4oirm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLW5Tkri2AnwjLVv7RzBQWreHYFFhqs18"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

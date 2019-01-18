@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home2"
+        android:title="홈"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_alarm"
+        android:enabled="true"
+        android:icon="@drawable/ic_alarm2"
+        android:title="맞춤공고"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_recommend"
+        android:enabled="true"
+        android:icon="@drawable/ic_thumb_up"
+        android:title="추천공고"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_search"
+        android:enabled="true"
+        android:icon="@drawable/ic_search2"
+        android:title="검색"
+        app:showAsAction="ifRoom" />
+
+
+    <item
+        android:id="@+id/action_setting"
+        android:enabled="true"
+        android:icon="@drawable/ic_setting2"
+        android:title="설정"
+        app:showAsAction="ifRoom" />
+</menu>

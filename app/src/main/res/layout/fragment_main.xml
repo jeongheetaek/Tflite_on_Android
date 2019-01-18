@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:largeHeap="true"
+    android:hardwareAccelerated="false"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:largeHeap="true"
+        android:hardwareAccelerated="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/image_policy"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginBottom="16dp"
+            android:scaleType="centerCrop"
+            android:largeHeap="true"
+            android:hardwareAccelerated="false"
+            android:src="@drawable/policy" />
+
+        <ImageView
+            android:id="@+id/image_bizinfo"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginBottom="16dp"
+            android:scaleType="centerCrop"
+            android:largeHeap="true"
+            android:hardwareAccelerated="false"
+            android:src="@drawable/bizinfo" />
+
+        <ImageView
+            android:id="@+id/image_dream"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginBottom="16dp"
+            android:scaleType="centerCrop"
+            android:largeHeap="true"
+            android:hardwareAccelerated="false"
+            android:src="@drawable/dream" />
+
+        <ImageView
+            android:id="@+id/image_outlet"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:largeHeap="true"
+            android:hardwareAccelerated="false"
+            android:scaleType="centerCrop"
+            android:src="@drawable/outlet" />
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
