@@ -50,7 +50,7 @@ public class SelectActivity extends AppCompatActivity{
         c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View view) {
-                tts.speak("장애인 정보를 공유하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                tts.speak("장애인 관련 필요정보를 확인하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
                 Intent intent = new Intent(
                         getApplicationContext(), LoginActivity.class);
                 startActivity(intent);

@@ -28,5 +28,5 @@
     <string name="dialog_select_camera">사진 촬영</string>
     <string name="dialog_select_gallery">사진 앨범</string>
 
-    <string name="image_picker_error">인식에 문제가 생격ㅆ습니다. 다시 확인해주세요.</string>
+    <string name="image_picker_error">인식에 문제가 있습니다. 다시 확인해주세요.</string>
 </resources>

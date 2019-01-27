@@ -68,7 +68,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:gravity="center_vertical"
-                    android:text="장애 유형 : "
+                    android:text="유효기간 :"
                     android:textColor="@color/colorBlue"
                     android:textSize="13dp"
                     android:textStyle="bold" />
@@ -88,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:gravity="center_vertical"
-                    android:text="유효기한 : "
+                    android:text="장애유형 :"
                     android:textColor="@color/colorBlue"
                     android:textSize="13dp"
                     android:textStyle="bold" />
@@ -108,7 +108,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:gravity="center_vertical"
-                    android:text="발급기관 : "
+                    android:text="발급기관 :"
                     android:textColor="@color/colorBlue"
                     android:textSize="13dp"
                     android:textStyle="bold" />
