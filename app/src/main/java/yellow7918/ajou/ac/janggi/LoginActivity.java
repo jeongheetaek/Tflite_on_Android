@@ -4,6 +4,7 @@ package yellow7918.ajou.ac.janggi;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -20,9 +21,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.concurrent.ThreadSafe;
+
+import static android.media.AudioManager.ERROR;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText et_id;
@@ -36,8 +40,18 @@ public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
 
+    TextToSpeech tts;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if(status != ERROR) {
+                    // 언어를 선택한다.
+                    tts.setLanguage(Locale.KOREAN);
+                }
+            }
+        });
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -61,25 +75,41 @@ public class LoginActivity extends AppCompatActivity {
 
         btn_login = findViewById(R.id.button_sign_in);
         btn_login.setOnClickListener(v -> {
-            progressBar.setVisibility(View.VISIBLE);
+
             String password = et_pw.getText().toString();
             String email = et_id.getText().toString();
-            firebaseAuth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
-                                startActivity(new Intent(getBaseContext(), MainActivity.class));
-                                progressBar.setVisibility(View.GONE);
-                                finish();
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                Toast.makeText(LoginActivity.this, "회원 정보가 틀렸습니다.", Toast.LENGTH_SHORT).show();
-                                progressBar.setVisibility(View.GONE);
+            if(et_id.getText().toString().equals("")){
+                Toast.makeText(LoginActivity.this,"아이디를 입력해주세요.", Toast.LENGTH_SHORT).show();
+                tts.speak("아이디를 입력해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                et_id.requestFocus();
+                return;
+            }
+            else if(et_pw.getText().toString().equals("")){
+                Toast.makeText(LoginActivity.this,"비밀번호를 입력해주세요. ", Toast.LENGTH_SHORT).show();
+                tts.speak("비밀번호를 입력해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                et_pw.requestFocus();
+                return;
+            }
+            else {
+                progressBar.setVisibility(View.VISIBLE);
+                firebaseAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    // Sign in success, update UI with the signed-in user's information
+                                    startActivity(new Intent(getBaseContext(), MainActivity.class));
+                                    progressBar.setVisibility(View.GONE);
+                                    finish();
+                                } else {
+                                    // If sign in fails, display a message to the user.
+                                    Toast.makeText(LoginActivity.this, "회원 정보가 틀렸습니다.", Toast.LENGTH_SHORT).show();
+                                    tts.speak("회원 정보가 틀렸습니다. 다시 입력해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                                    progressBar.setVisibility(View.GONE);
+                                }
                             }
-                        }
-                    });
+                        });
+            }
         });
 
         btn_sign_up = findViewById(R.id.button_sign_up);
