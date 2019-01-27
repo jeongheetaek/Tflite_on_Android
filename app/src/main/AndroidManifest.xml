@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
@@ -38,8 +39,7 @@
         <activity android:name=".SignUpActivity2" />
         <activity android:name=".SignUpActivity3" />
         <activity android:name=".SelectFunction" />
-        <activity android:name=".OcrActivity"/>
-        <activity android:name=".Ocract"/>
+        <activity android:name=".TabFragment2"/>
         <activity android:name=".BizInfoDetailAcvtivity"/>
         <activity android:name=".PolicyBulletinDetailActivity" />
         <activity android:name=".Dream365DetailAcvtivity"/>

@@ -16,6 +16,14 @@
         android:layout_height="300dp"
         android:layout_gravity="center|top" />
 
+    <Button
+        android:id="@+id/btnDetectObject"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textAllCaps="false"
+        android:visibility="gone"
+        android:background="#00ff0000" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -50,20 +58,12 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnDetectObject"
-            android:layout_width="272dp"
-            android:layout_height="match_parent"
-            android:text="@string/detect_object"
-            android:textAllCaps="false"
-            android:textColor="@android:color/black" />
-
-        <Button
-            android:id="@+id/speech"
+            android:id="@+id/btnDetectObject2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="소리내기"
+            android:text="사물인식을 위해 화면전체를 터치해주세요."
             android:textAllCaps="false"
-            android:textColor="@android:color/black" />
+            android:background="#00ff0000" />
 
 
         <Button
