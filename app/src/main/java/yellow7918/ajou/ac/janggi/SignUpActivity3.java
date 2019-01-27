@@ -52,11 +52,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
 public class SignUpActivity3 extends AppCompatActivity {
 
     //API KEY
-    private static final String CLOUD_VISION_API_KEY = "AIzaSyAGDwXac6q3EBYEVdMmLEKrTV-mhhPYl-s";
+    //private static final String CLOUD_VISION_API_KEY = "AIzaSyAGDwXac6q3EBYEVdMmLEKrTV-mhhPYl-s";
+    private static final String CLOUD_VISION_API_KEY = "AIzaSyAWe7xFMmM1m10S56xwmp_eSQ2jRX3rAJg";
 
     public static final String FILE_NAME = "temp.jpg";
     private static final String ANDROID_CERT_HEADER = "X-Android-Cert";
@@ -495,8 +495,8 @@ public class SignUpActivity3 extends AppCompatActivity {
     //문자열 처리
     private static String[] pickInfo(String original) {
 
-        //String target[] = {"업 체 명 :", "사업자등록번호 :", "대 표 자 명 :", "주\n"};//,"주\n소 :"
         String target[] = {"업 체 명 :", "사업자등록번호 :", "대 표 자 명 :", "주\n"};//,"주\n소 :"
+        //String target[] = {"홍길동 ", "123456 ", "유효기한:", "서울특별시\n"};//,"주\n소 :"
         int[] target_num = new int[4];
 
         String result[] = new String[4];

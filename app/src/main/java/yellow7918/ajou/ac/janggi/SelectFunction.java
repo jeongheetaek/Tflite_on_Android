@@ -3,6 +3,7 @@ package yellow7918.ajou.ac.janggi;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,6 +19,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import java.util.Locale;
+
+import static android.media.AudioManager.ERROR;
 
 //import javax.annotation.Nullable;
 
@@ -45,9 +50,20 @@ public class SelectFunction extends Fragment {
 }
 */
 public class SelectFunction extends AppCompatActivity{
+    TextToSpeech tts;
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
+        tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if(status != ERROR) {
+                    // 언어를 선택한다.
+                    tts.setLanguage(Locale.KOREAN);
+                }
+            }
+        });
         super .onCreate(savedInstanceState);
         setContentView(R.layout.detection_four);
 
@@ -59,6 +75,7 @@ public class SelectFunction extends AppCompatActivity{
         a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View view) {
+                tts.speak("편의점 상품 인식 기능을 실행하겠습니다. 인식을 위해 화면전체를 터치해주세요.", TextToSpeech.QUEUE_FLUSH, null);
                 Intent intent = new Intent(
                         getApplicationContext(), Classifi_MainActivity.class);
                 startActivity(intent);
@@ -70,6 +87,7 @@ public class SelectFunction extends AppCompatActivity{
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View view) {
+                tts.speak("일반 사물 인식 기능을 실행하겠습니다.인식을 위해 화면전체를 터치해주세요.", TextToSpeech.QUEUE_FLUSH, null);
                 Intent intent = new Intent(
                         getApplicationContext(), Classifi_MainActivity2.class);
                 startActivity(intent);
@@ -81,6 +99,7 @@ public class SelectFunction extends AppCompatActivity{
         c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View view) {
+                tts.speak("바코드 인식 기능을 실행하겠습니다. 인식을 위해 화면전체를 터치해주세요.", TextToSpeech.QUEUE_FLUSH, null);
                 Intent intent = new Intent(
                         getApplicationContext(), Classifi_MainActivity.class);
                 startActivity(intent);
@@ -92,8 +111,9 @@ public class SelectFunction extends AppCompatActivity{
         d.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View view) {
+                tts.speak("글자 인식 기능을 실행하겠습니다. 인식을 위해 문서를 선택해주세요.", TextToSpeech.QUEUE_FLUSH, null);
                 Intent intent = new Intent(
-                        getApplicationContext(), Ocract.class);
+                        getApplicationContext(), TabFragment2.class);
                 startActivity(intent);
             }
         });

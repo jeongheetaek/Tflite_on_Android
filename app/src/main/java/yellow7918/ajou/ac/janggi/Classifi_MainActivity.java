@@ -1,6 +1,7 @@
 package yellow7918.ajou.ac.janggi;
 
 import android.graphics.Bitmap;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
@@ -27,6 +28,7 @@ import java.util.Locale;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+import static android.media.AudioManager.ERROR;
 import static java.security.AccessController.getContext;
 
 import static yellow7918.ajou.ac.janggi.Classifier.Recognition.title;
@@ -35,6 +37,8 @@ public class Classifi_MainActivity extends AppCompatActivity {
     TextToSpeech tts;
     EditText inputtext;
     Button button;
+    private MediaPlayer mp;
+
 
     //private static final String MODEL_PATH = "mobilenet_quant_v1_224.tflite";
     private static final String MODEL_PATH = "final_app.tflite";
@@ -52,6 +56,19 @@ public class Classifi_MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mp = MediaPlayer.create(this, R.raw.tick);
+
+
+        tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if(status != ERROR) {
+                    // 언어를 선택한다.
+                    tts.setLanguage(Locale.KOREAN);
+                }
+            }
+        });
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.classifi_activity_main);
         cameraView = findViewById(R.id.cameraView);
@@ -61,7 +78,7 @@ public class Classifi_MainActivity extends AppCompatActivity {
 
         btnToggleCamera = findViewById(R.id.btnToggleCamera);
         btnDetectObject = findViewById(R.id.btnDetectObject);
-        speech = findViewById(R.id.speech);
+        //speech = findViewById(R.id.speech);
 
         cameraView.addCameraKitListener(new CameraKitEventListener() {
             @Override
@@ -84,15 +101,12 @@ public class Classifi_MainActivity extends AppCompatActivity {
                 imageViewResult.setImageBitmap(bitmap);
 
                 final List<Classifier.Recognition> results = classifier.recognizeImage(bitmap);
-
-                tts = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener(){
-                    @Override
-                    public void onInit(int status) {
-                        if(status != TextToSpeech.ERROR) {
-                            tts.setLanguage(Locale.KOREAN);
-                        }
-                    }
-                });
+                String text = title;
+                Log.d("test", title);
+                //SoundManager.cleanup();
+                mp.pause();
+                tts.speak(text+"로 인식했습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                /*
                 speech.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -103,6 +117,7 @@ public class Classifi_MainActivity extends AppCompatActivity {
 
                     }
                 });
+                */
                 textViewResult.setText(results.toString());
             }
 
@@ -122,6 +137,9 @@ public class Classifi_MainActivity extends AppCompatActivity {
         btnDetectObject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mp.setLooping(true);
+                mp.start();
+                //SoundManager.playSound(1,1);
                 cameraView.captureImage();
             }
         });
@@ -144,6 +162,7 @@ public class Classifi_MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        mp.release();
         executor.execute(new Runnable() {
             @Override
             public void run() {
