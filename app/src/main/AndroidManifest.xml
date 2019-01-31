@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+
 
     <application
         android:allowBackup="true"
@@ -39,6 +41,7 @@
         <activity android:name=".SignUpActivity2" />
         <activity android:name=".SignUpActivity3" />
         <activity android:name=".SelectFunction" />
+        <activity android:name=".Voice" />
         <activity android:name=".TabFragment2"/>
         <activity android:name=".BizInfoDetailAcvtivity"/>
         <activity android:name=".PolicyBulletinDetailActivity" />

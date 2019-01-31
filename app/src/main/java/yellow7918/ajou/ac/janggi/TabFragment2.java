@@ -106,7 +106,7 @@ public class TabFragment2 extends AppCompatActivity {
         a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View view) {
-                tts.speak("편의점 상품 인식 기능을 실행하겠습니다. 인식을 위해 화면전체를 터치해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                tts.speak("인식된 내용을 공유하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
                 Intent intent = new Intent(new Intent(android.content.Intent.ACTION_SEND));
                 intent.setType("text/plain");
                 String text = "원하는 텍스트를 입력하세요";

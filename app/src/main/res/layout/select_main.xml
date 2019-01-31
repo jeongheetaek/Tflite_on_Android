@@ -7,22 +7,21 @@
     android:orientation="vertical"
     tools:context=".SignUpActivity">
 
+    <ProgressBar
+        android:id="@+id/progressBar3"
+        android:layout_width="250dp"
+        android:layout_height="360dp"
+        android:visibility="gone" />
+
     <ImageView
         android:id="@+id/infobttn"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="318dp"
         android:adjustViewBounds="true"
         android:baselineAligned="false"
         android:scaleType="fitXY"
-        android:src="@drawable/logo_text" />
-    <ImageView
-        android:id="@+id/nothing"
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:adjustViewBounds="true"
-        android:baselineAligned="false"
-        android:scaleType="fitXY"
-        android:src="@drawable/iphone" />
+        android:src="@drawable/main" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,7 +38,7 @@
             android:adjustViewBounds="true"
             android:baselineAligned="false"
             android:scaleType="fitXY"
-            android:src="@drawable/vision" />
+            android:src="@drawable/sin1" />
 
         <ImageView
             android:id="@+id/infobtn"
@@ -49,7 +48,7 @@
             android:adjustViewBounds="true"
             android:baselineAligned="false"
             android:scaleType="fitXY"
-            android:src="@drawable/info2" />
+            android:src="@drawable/sin2" />
 
     </LinearLayout>
 

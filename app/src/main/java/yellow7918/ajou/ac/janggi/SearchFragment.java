@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -73,8 +74,10 @@ public class SearchFragment extends Fragment {
                                 info.setTitle((String) map.get("title"));
                                 info.setWriter((String) map.get("writer"));
 
-                                if(!(info.haveKeyWord(editText.getText().toString())))
+                                if(!(info.haveKeyWord(editText.getText().toString()))){
+//                                    Toast.makeText(getContext(),"인터넷 연결 안됨", Toast.LENGTH_SHORT).show();
                                     continue;
+                                    }
 
 
                                 List<HashMap<String, String>> file = (List<HashMap<String, String>>) map.get("files");

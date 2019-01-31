@@ -509,7 +509,7 @@ public class SignUpActivity3 extends AppCompatActivity {
         */
         if(original.contains("복지카드"))
         {
-            target_num[0]=original.indexOf("유효기간");
+            target_num[0]=original.indexOf("유효기한");
             if(target_num[0] != -1) {
                 result[0] = original.substring(target_num[0] + 7, target_num[0] + 7 + 11);
                 result[0] = result[0].replace("null", "");
@@ -517,17 +517,17 @@ public class SignUpActivity3 extends AppCompatActivity {
             }
             else result[0] = "내용을 찾지 못했습니다.";
 
-            target_num[1]=original.indexOf("급");
+            target_num[1]=original.indexOf("증은");
             if(target_num[1] != 0){
-                result[1] = original.substring(target_num[1]-5, target_num[1]);
-                result[1] = result[0].replace("null", "");
+                result[1] = original.substring(target_num[1]-9, target_num[1]-3);
+                result[1] = result[1].replace("null", "");
                 Log.d("Log", result[1]);
             }
             else result[1] = "내용을 찾지 못했습니다.";
 
             target_num[2]=original.indexOf("시장");
             if(target_num[2] != 0) {
-                result[2] = original.substring(target_num[2] - 2, target_num[2] + 2 );
+                result[2] = original.substring(target_num[2] - 2, target_num[2] + 1);
                 result[2] = result[2].replace("null", "");
                 Log.d("Log", result[2]);
             }

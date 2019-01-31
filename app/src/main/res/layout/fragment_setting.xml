@@ -93,7 +93,7 @@
                 <TextView
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
-                    android:text="장애유형"
+                    android:text="유효기간"
                     android:textColor="#000"
                     android:textSize="16sp" />
 
@@ -102,7 +102,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="6dp"
-                    android:text="장애유형"
+                    android:text="유효기간"
                     android:textAlignment="viewEnd"
                     android:textColor="@color/colorBlue"
                     android:textSize="16sp" />
@@ -119,7 +119,7 @@
                 <TextView
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
-                    android:text="유효기간"
+                    android:text="장애유형"
                     android:textColor="#000"
                     android:textSize="16sp" />
 
@@ -128,7 +128,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="6dp"
-                    android:text="유효기간"
+                    android:text="장애유형"
                     android:textAlignment="viewEnd"
                     android:textColor="@color/colorBlue"
                     android:textSize="16sp" />

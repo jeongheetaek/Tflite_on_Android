@@ -65,14 +65,15 @@ public class BizInfo extends Fragment {
                         info.setTitle((String) map.get("title"));
                         info.setWriter((String) map.get("writer"));
 
-//                        if(!(info.haveKeyWord("정책") || info.haveKeyWord("판로")))
-//                            continue;
+                        if(!(info.haveKeyWord("장애인") || info.haveKeyWord("채용")))
+                            continue;
+                        else {
 
+                            List<HashMap<String, String>> file = (List<HashMap<String, String>>) map.get("files");
+                            info.setFiles(file);
 
-                        List<HashMap<String, String>> file = (List<HashMap<String, String>>) map.get("files");
-                        info.setFiles(file);
-
-                        infoList.add(info);
+                            infoList.add(info);
+                        }
                     }
                 }
                 System.out.println(infoList.size());
