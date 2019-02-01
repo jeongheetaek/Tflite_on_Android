@@ -40,10 +40,10 @@ public class Classifi_MainActivity extends AppCompatActivity {
     private MediaPlayer mp;
 
 
-    //private static final String MODEL_PATH = "mobilenet_quant_v1_224.tflite";
+    //private static final String MODEL_PATH = "mobilenet_quant_v1_224.tflite`";
     private static final String MODEL_PATH = "final_app.tflite";
     private static final String LABEL_PATH = "labels.txt";
-    //private static final String MODEL_PATH = "shop_app.tflite";
+    //private static final String MODEL_PATH = "tflite_shop_final.tflite";
     //private static final String LABEL_PATH = "shop_labels2.txt";
 
     private static final int INPUT_SIZE = 224;

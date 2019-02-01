@@ -36,6 +36,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".Classifi_MainActivity" />
         <activity android:name=".Classifi_MainActivity2" />
+        <activity android:name=".Classifi_MainActivity3" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".SignUpActivity2" />
@@ -43,6 +44,7 @@
         <activity android:name=".SelectFunction" />
         <activity android:name=".Voice" />
         <activity android:name=".TabFragment2"/>
+        <activity android:name=".TabFragment"/>
         <activity android:name=".BizInfoDetailAcvtivity"/>
         <activity android:name=".PolicyBulletinDetailActivity" />
         <activity android:name=".Dream365DetailAcvtivity"/>

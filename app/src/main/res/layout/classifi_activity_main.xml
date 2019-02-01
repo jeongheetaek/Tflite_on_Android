@@ -8,12 +8,12 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.amitshekhar.tflite.MainActivity">
+    tools:context=".Classifi_MainActivity2">
 
     <com.wonderkiln.camerakit.CameraView
         android:id="@+id/cameraView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="352dp"
+        android:layout_height="438dp"
         android:layout_gravity="center|top" />
 
     <Button
@@ -61,9 +61,9 @@
             android:id="@+id/btnDetectObject2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="사물인식을 위해 화면전체를 터치해주세요."
-            android:textAllCaps="false"
-            android:background="#00ff0000" />
+            android:background="#00ff0000"
+            android:text="인식을 위해 화면전체를 터치해주세요."
+            android:textAllCaps="false" />
 
 
         <Button
