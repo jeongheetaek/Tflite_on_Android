@@ -99,13 +99,34 @@ public class SelectFunction extends AppCompatActivity{
         c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View view) {
-                tts.speak("바코드 인식 기능을 실행하겠습니다. 인식을 위해 화면전체를 터치해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                tts.speak("매장 인식 기능을 실행하겠습니다. 인식을 위해 화면전체를 터치해주세요.", TextToSpeech.QUEUE_FLUSH, null);
                 Intent intent = new Intent(
-                        getApplicationContext(), Classifi_MainActivity.class);
+                        getApplicationContext(), Classifi_MainActivity3.class);
                 startActivity(intent);
             }
         });
-
+        //Button d = (Button)findViewById(R.id.text);
+        ImageView e=(ImageView)findViewById((R.id.situation));
+        e.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View view) {
+                tts.speak("상황 인식 기능은 잠겨있습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                Intent intent = new Intent(
+                        getApplicationContext(), SelectFunction.class);
+                startActivity(intent);
+            }
+        });
+        //Button d = (Button)findViewById(R.id.text);
+        ImageView f=(ImageView)findViewById((R.id.number));
+        f.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View view) {
+                tts.speak("숫자 인식 기능을 실행하겠습니다. 인식을 위해 문서를 선택해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                Intent intent = new Intent(
+                        getApplicationContext(), TabFragment.class);
+                startActivity(intent);
+            }
+        });
         //Button d = (Button)findViewById(R.id.text);
         ImageView d=(ImageView)findViewById((R.id.text));
         d.setOnClickListener(new View.OnClickListener() {

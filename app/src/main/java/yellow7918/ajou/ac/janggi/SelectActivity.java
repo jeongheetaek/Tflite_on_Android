@@ -45,6 +45,7 @@ public class SelectActivity extends AppCompatActivity{
                 }
             }
         });
+        tts.speak("음성인식 기능을 위해 화면을 터치해주세요.", TextToSpeech.QUEUE_FLUSH, null);
         super .onCreate(savedInstanceState);
         setContentView(R.layout.select_main);
         ImageView b=(ImageView)findViewById((R.id.detectbtn));

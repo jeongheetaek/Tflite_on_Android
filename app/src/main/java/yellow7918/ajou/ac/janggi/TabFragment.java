@@ -55,8 +55,7 @@ import java.util.Locale;
 import static android.media.AudioManager.ERROR;
 import static yellow7918.ajou.ac.janggi.Classifier.Recognition.title;
 
-
-public class TabFragment2 extends AppCompatActivity {
+public class TabFragment extends AppCompatActivity {
 
 
     private static final String CLOUD_VISION_API_KEY = "AIzaSyAWe7xFMmM1m10S56xwmp_eSQ2jRX3rAJg";
@@ -66,7 +65,7 @@ public class TabFragment2 extends AppCompatActivity {
     private static final int MAX_LABEL_RESULTS = 10;
     private static final int MAX_DIMENSION = 1200;
 
-    private static final String TAG = TabFragment2.class.getSimpleName();
+    private static final String TAG = TabFragment.class.getSimpleName();
     private static final int GALLERY_PERMISSIONS_REQUEST = 0;
     private static final int GALLERY_IMAGE_REQUEST = 1;
     public static final int CAMERA_PERMISSIONS_REQUEST = 2;
@@ -109,7 +108,7 @@ public class TabFragment2 extends AppCompatActivity {
                 tts.speak("인식된 내용을 공유하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
                 Intent intent = new Intent(new Intent(android.content.Intent.ACTION_SEND));
                 intent.setType("text/plain");
-                String text = "원하는 텍스트를 입력하세요";
+                String text = "원하는 숫자를 입력하세요";
                 intent.putExtra(Intent.EXTRA_TEXT, text);
 
                 Intent chooser = Intent.createChooser(intent, "공유하기");
@@ -123,7 +122,7 @@ public class TabFragment2 extends AppCompatActivity {
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(TabFragment2.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(TabFragment.this);
             builder
                     .setMessage(R.string.dialog_select_prompt)
                     .setPositiveButton(R.string.dialog_select_gallery, (dialog, which) -> startGalleryChooser())
@@ -292,10 +291,10 @@ public class TabFragment2 extends AppCompatActivity {
 
     private static class LableDetectionTask extends AsyncTask<Object, Void, String> {
 
-        private final WeakReference<TabFragment2> mActivityWeakReference;
+        private final WeakReference<TabFragment> mActivityWeakReference;
         private Vision.Images.Annotate mRequest;
 
-        LableDetectionTask(TabFragment2 activity, Vision.Images.Annotate annotate) {
+        LableDetectionTask(TabFragment activity, Vision.Images.Annotate annotate) {
             mActivityWeakReference = new WeakReference(activity);
             mRequest = annotate;
         }
@@ -319,7 +318,7 @@ public class TabFragment2 extends AppCompatActivity {
 
 
         protected void onPostExecute(String result) {
-            TabFragment2 activity = mActivityWeakReference.get();
+            TabFragment activity = mActivityWeakReference.get();
             if (activity != null && !activity.isFinishing()) {
                 TextView imageDetail = activity.findViewById(R.id.image_details);
                 imageDetail.setText(result);
@@ -371,21 +370,24 @@ public class TabFragment2 extends AppCompatActivity {
 
     private static String convertResponseToString(BatchAnnotateImagesResponse response) {
 
-        StringBuilder message = new StringBuilder("글자를 인식했습니다.\n\n");
+        StringBuilder message = new StringBuilder("숫자를 인식했습니다.\n\n");
 
         List<EntityAnnotation> labels = response.getResponses().get(0).getTextAnnotations();
         if (labels != null) {
 
             for (EntityAnnotation label : labels) {
+                String text = String.format(Locale.KOREAN, label.getDescription());
+                String clean = text.replaceAll("[^0-9]","");
+                message.append(String.format(Locale.US, "%s", clean));
+                //message.append(String.format(Locale.US, "%s", label.getDescription()));
 
-                message.append(String.format(Locale.US, "%s", label.getDescription()));
                 //String
                 //tts.speak(text,TextToSpeech.QUEUE_FLUSH, null);
             }
 
         } else {
-            message.append("인식된 글자가 없습니다.");
-            tts.speak("인식된 글자가 없습니다.",TextToSpeech.QUEUE_FLUSH, null);
+            message.append("인식된 숫자가 없습니다.");
+            tts.speak("인식된 숫자가 없습니다.",TextToSpeech.QUEUE_FLUSH, null);
         }
 
         return message.toString();
