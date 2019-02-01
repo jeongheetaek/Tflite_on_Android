@@ -65,7 +65,7 @@ public class OutletPolicy extends Fragment {
                         info.setTitle((String) map.get("title"));
                         info.setWriter((String) map.get("writer"));
 
-                        if(!(info.haveKeyWord("정부") || info.haveKeyWord("지원")))
+                        if(!(info.haveKeyWord("정부") || info.haveKeyWord("참가")))
                             continue;
 
                         else {
@@ -103,3 +103,10 @@ public class OutletPolicy extends Fragment {
     }
 }
 //판로정책
+/*
+
+정책공고 - 정책지원 -policybulletin -- 정책, 지원
+비즈인포 - 장애인채용 - info -- 채용, 경영
+드림 - 모집공고 - dream364 -- 정책, 판로
+판로지원 - 정부지원 - outletpolicy -- 정부, 참가
+ */

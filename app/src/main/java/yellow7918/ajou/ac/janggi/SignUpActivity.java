@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -36,6 +39,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         if (getIntent() != null) {
             etEmail.setText(getIntent().getStringExtra("email"));
+
         }
 
         // 비밀번호 일치 검사
@@ -75,17 +79,24 @@ public class SignUpActivity extends AppCompatActivity {
                     etEmail.requestFocus();
                     return;
                 }
+                Pattern p = Pattern.compile("^[_a-zA-Z0-9-\\.]+@[\\.a-zA-Z0-9-]+\\.[a-zA-Z]+$");
+                Matcher m = p.matcher((etEmail).getText().toString());
+
+                if (!m.matches()){
+                    Toast.makeText(SignUpActivity.this, "Email 양식을 확인 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 // 비밀번호 입력 확인
-                if (etPassword.getText().toString().length() == 0) {
-                    Toast.makeText(SignUpActivity.this, "비밀번호를 입력해 주세요.", Toast.LENGTH_SHORT).show();
+                if (etPassword.getText().toString().length() <= 3) {
+                    Toast.makeText(SignUpActivity.this, "비밀번호를 4자리 이상 입력해 주세요.", Toast.LENGTH_SHORT).show();
                     etPassword.requestFocus();
                     return;
                 }
 
                 // 비밀번호 확인 입력 확인
-                if (etPasswordConfirm.getText().toString().length() == 0) {
-                    Toast.makeText(SignUpActivity.this, "비밀번호를 입력해 주세요.", Toast.LENGTH_SHORT).show();
+                if (etPasswordConfirm.getText().toString().length() <= 3) {
+                    Toast.makeText(SignUpActivity.this, "비밀번호를 4자리 이상 입력해 주세요.", Toast.LENGTH_SHORT).show();
                     etPasswordConfirm.requestFocus();
                     return;
                 }

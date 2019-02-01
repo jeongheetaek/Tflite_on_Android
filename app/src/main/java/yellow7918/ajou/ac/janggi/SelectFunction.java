@@ -138,5 +138,27 @@ public class SelectFunction extends AppCompatActivity{
                 startActivity(intent);
             }
         });
+
+        ImageView k=(ImageView)findViewById((R.id.clothes));
+        k.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View view) {
+                tts.speak("옷 찾기 기능을 실행하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                Intent intent = new Intent(
+                        getApplicationContext(), Classifi_MainActivity4.class);
+                startActivity(intent);
+            }
+        });
+
+        ImageView z=(ImageView)findViewById((R.id.comm));
+        z.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View view) {
+                tts.speak("커뮤니티 기능은 잠겨있습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                Intent intent = new Intent(
+                        getApplicationContext(), SelectFunction.class);
+                startActivity(intent);
+            }
+        });
     }
 }

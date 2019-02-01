@@ -271,7 +271,7 @@ public class TabFragment extends AppCompatActivity {
             // add the features we want
             annotateImageRequest.setFeatures(new ArrayList<Feature>() {{
                 Feature textDetection = new Feature();
-                textDetection.setType("TEXT_DETECTION");
+                textDetection.setType("DOCUMENT_TEXT_DETECTION");
                 textDetection.setMaxResults(MAX_LABEL_RESULTS);
                 add(textDetection);
             }});
@@ -378,7 +378,7 @@ public class TabFragment extends AppCompatActivity {
             for (EntityAnnotation label : labels) {
                 String text = String.format(Locale.KOREAN, label.getDescription());
                 String clean = text.replaceAll("[^0-9]","");
-                message.append(String.format(Locale.US, "%s", clean));
+                message.append(String.format(Locale.KOREAN, "%s", clean));
                 //message.append(String.format(Locale.US, "%s", label.getDescription()));
 
                 //String

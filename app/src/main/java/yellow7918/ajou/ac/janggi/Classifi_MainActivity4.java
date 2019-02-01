@@ -10,11 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.speech.tts.TextToSpeech;
-import android.widget.Toast;
 
 import com.wonderkiln.camerakit.CameraKitError;
 import com.wonderkiln.camerakit.CameraKitEvent;
@@ -29,11 +26,9 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 import static android.media.AudioManager.ERROR;
-import static java.security.AccessController.getContext;
-
 import static yellow7918.ajou.ac.janggi.Classifier.Recognition.title;
-public class Classifi_MainActivity3 extends AppCompatActivity {
 
+public class Classifi_MainActivity4 extends AppCompatActivity {
     TextToSpeech tts;
     EditText inputtext;
     Button button;
@@ -199,3 +194,4 @@ public class Classifi_MainActivity3 extends AppCompatActivity {
         });
     }
 }
+

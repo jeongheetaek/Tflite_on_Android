@@ -34,7 +34,7 @@ public class RecommendPolicyBulletin extends android.support.v4.app.Fragment {
     private InfoAdapter infoAdapter;
     private List<Info> infoList;
 
-    private String[] tag = {"정부정책", "신사업공고", "채용", "입찰정보", "보조금", "창업", "참가지원", "판로지원", "모집공모"};
+    private String[] tag = {"정부정책", "신사업공고", "채용", "입찰정보", "보조금", "창업", "모집공모"};
 
     @Nullable
     @Override

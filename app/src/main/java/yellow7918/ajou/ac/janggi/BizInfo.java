@@ -65,7 +65,7 @@ public class BizInfo extends Fragment {
                         info.setTitle((String) map.get("title"));
                         info.setWriter((String) map.get("writer"));
 
-                        if(!(info.haveKeyWord("장애인") || info.haveKeyWord("채용")))
+                        if(!(info.haveKeyWord("채용") || info.haveKeyWord("경영")))
                             continue;
                         else {
 

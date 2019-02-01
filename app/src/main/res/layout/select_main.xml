@@ -16,7 +16,7 @@
     <ImageView
         android:id="@+id/infobttn"
         android:layout_width="match_parent"
-        android:layout_height="318dp"
+        android:layout_height="396dp"
         android:adjustViewBounds="true"
         android:baselineAligned="false"
         android:scaleType="fitXY"
@@ -37,8 +37,20 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:baselineAligned="false"
-            android:scaleType="fitXY"
+            android:scaleType="center"
             android:src="@drawable/sin1" />
+
+        <ImageView
+            android:id="@+id/between"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+
+
+            android:src="#ffffff" />
+
 
         <ImageView
             android:id="@+id/infobtn"
@@ -47,7 +59,8 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:baselineAligned="false"
-            android:scaleType="fitXY"
+            android:scaleType="center"
+
             android:src="@drawable/sin2" />
 
     </LinearLayout>

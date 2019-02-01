@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
@@ -51,6 +52,9 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
+
+import static android.media.audiofx.AudioEffect.ERROR;
 
 
 public class SignUpActivity3 extends AppCompatActivity {
@@ -69,6 +73,8 @@ public class SignUpActivity3 extends AppCompatActivity {
     private static final int GALLERY_IMAGE_REQUEST = 1;
     public static final int CAMERA_PERMISSIONS_REQUEST = 2;
     public static final int CAMERA_IMAGE_REQUEST = 3;
+
+
 
     //버튼들
     private Button btnDone;
@@ -98,6 +104,8 @@ public class SignUpActivity3 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup3);
         progressBar = findViewById(R.id.progressBar);
@@ -198,7 +206,7 @@ public class SignUpActivity3 extends AppCompatActivity {
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                    Toast.makeText(getBaseContext(), "회원 가입에 실패 했습니다.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getBaseContext(), "이메일 양식이 잘못되어 회원 가입에 실패 했습니다.", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
@@ -400,11 +408,14 @@ public class SignUpActivity3 extends AppCompatActivity {
 
             } catch (GoogleJsonResponseException e) {
                 Log.d(TAG, "failed to make API request because " + e.getContent());
+
+                throw new IllegalArgumentException("에러 메시지");
             } catch (IOException e) {
                 Log.d(TAG, "failed to make API request because of other IOException " +
                         e.getMessage());
+                throw new IllegalArgumentException("에러 메시지");
             }
-            return b;
+            //return b;
         }
 
         //background 작업 후 UI 작업
@@ -502,6 +513,8 @@ public class SignUpActivity3 extends AppCompatActivity {
         int[] target_num = new int[4];
         target_num[0]=-1;target_num[1]=0;target_num[2]=0;
         String result[] = new String[4];
+        int confirm = 0;
+        String Textviewer[] = new String[4];
         if(original.contains("복지카드"))
         {
             target_num[0]=original.indexOf("유효기한");
@@ -510,7 +523,14 @@ public class SignUpActivity3 extends AppCompatActivity {
                 result[0] = result[0].replace("null", "");
                 Log.d("Log", result[0]);
             }
-            else result[0] = "내용을 찾지 못했습니다.";
+            else {
+                result[0] = "잘못된 정보입니다.";
+                //tts.speak("내용을 찾지못했습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                confirm = 1;
+                //Toast.makeText("내용을 찾지못했습니다.", Toast.LENGTH_SHORT).show();
+                return result;
+
+            }
 
             target_num[1]=original.indexOf("증은");
             if(target_num[1] != 0){
@@ -518,7 +538,13 @@ public class SignUpActivity3 extends AppCompatActivity {
                 result[1] = result[1].replace("null", "");
                 Log.d("Log", result[1]);
             }
-            else result[1] = "내용을 찾지 못했습니다.";
+            else{
+                result[1] = "잘못된 정보입니다.";
+                //tts.speak("내용을 찾지못했습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                confirm = 1;
+                //Toast.makeText(this,"내용을 찾지못했습니다.", Toast.LENGTH_SHORT).show();
+                return result;
+            }
 
             target_num[2]=original.indexOf("시장");
             if(target_num[2] != 0) {
@@ -526,12 +552,24 @@ public class SignUpActivity3 extends AppCompatActivity {
                 result[2] = result[2].replace("null", "");
                 Log.d("Log", result[2]);
             }
-            else result[2] = "내용을 찾지 못했습니다.";
+            else {
+                result[2] = "잘못된 정보입니다.";
+                //tts.speak("내용을 찾지못했습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                confirm = 1;
+                return result;
+                //Toast.makeText(this,"내용을 찾지못했습니다.", Toast.LENGTH_SHORT).show();
+            }
         }
-
-
-
+        else {
+            //tts.speak("내용을 찾지못했습니다.", TextToSpeech.QUEUE_FLUSH, null);
+            result[0] = "잘못된 정보입니다.";
+            result[1] = "잘못된 정보입니다.";
+            result[2] = "잘못된 정보입니다.";
+            Log.d("ERROR :: ", "치명적인 오류가 발생했습니다. 개발자에게 문의하시기 바랍니다.");
+        }
         return result;
+
+
     }
 }
 
