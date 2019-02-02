@@ -47,7 +47,7 @@ public class Classifi_MainActivity2 extends AppCompatActivity {
     private Classifier classifier;
 
     private Executor executor = Executors.newSingleThreadExecutor();
-    private TextView textViewResult;
+    //private TextView textViewResult;
     private Button btnDetectObject, btnToggleCamera, speech;
     private ImageView imageViewResult;
     private CameraView cameraView;
@@ -77,8 +77,8 @@ public class Classifi_MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.classifi_activity_main);
         cameraView = findViewById(R.id.cameraView);
         imageViewResult = findViewById(R.id.imageViewResult);
-        textViewResult = findViewById(R.id.textViewResult);
-        textViewResult.setMovementMethod(new ScrollingMovementMethod());
+        //textViewResult = findViewById(R.id.textViewResult);
+        //textViewResult.setMovementMethod(new ScrollingMovementMethod());
 
         btnToggleCamera = findViewById(R.id.btnToggleCamera);
         btnDetectObject = findViewById(R.id.btnDetectObject);
@@ -107,8 +107,10 @@ public class Classifi_MainActivity2 extends AppCompatActivity {
                 final List<Classifier.Recognition> results = classifier.recognizeImage(bitmap);
                 String text = title;
                 Log.d("test", title);
-                //SoundManager.cleanup();
                 mp.pause();
+                //SoundManager.cleanup();
+
+
                 tts.speak(text+"로 인식했습니다.", TextToSpeech.QUEUE_FLUSH, null);
                 /*
                 speech.setOnClickListener(new View.OnClickListener() {
@@ -122,7 +124,7 @@ public class Classifi_MainActivity2 extends AppCompatActivity {
                     }
                 });
                 */
-                textViewResult.setText(results.toString());
+                //textViewResult.setText(results.toString());
             }
 
             @Override

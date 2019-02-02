@@ -88,15 +88,15 @@ public class SignUpActivity extends AppCompatActivity {
                 }
 
                 // 비밀번호 입력 확인
-                if (etPassword.getText().toString().length() <= 3) {
-                    Toast.makeText(SignUpActivity.this, "비밀번호를 4자리 이상 입력해 주세요.", Toast.LENGTH_SHORT).show();
+                if (etPassword.getText().toString().length() <= 6) {
+                    Toast.makeText(SignUpActivity.this, "비밀번호를 7자리 이상 입력해 주세요.", Toast.LENGTH_SHORT).show();
                     etPassword.requestFocus();
                     return;
                 }
 
                 // 비밀번호 확인 입력 확인
-                if (etPasswordConfirm.getText().toString().length() <= 3) {
-                    Toast.makeText(SignUpActivity.this, "비밀번호를 4자리 이상 입력해 주세요.", Toast.LENGTH_SHORT).show();
+                if (etPasswordConfirm.getText().toString().length() <= 6) {
+                    Toast.makeText(SignUpActivity.this, "비밀번호를 7자리 이상 입력해 주세요.", Toast.LENGTH_SHORT).show();
                     etPasswordConfirm.requestFocus();
                     return;
                 }

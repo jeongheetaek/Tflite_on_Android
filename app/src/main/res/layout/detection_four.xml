@@ -111,11 +111,11 @@
         <ImageView
             android:id="@+id/comm"
             android:layout_width="150dp"
-            android:layout_height="90dp"
+            android:layout_height="100dp"
             android:adjustViewBounds="true"
             android:baselineAligned="false"
-            android:scaleType="fitCenter"
-            android:src="@drawable/comm" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/sound" />
 
     </LinearLayout>
 

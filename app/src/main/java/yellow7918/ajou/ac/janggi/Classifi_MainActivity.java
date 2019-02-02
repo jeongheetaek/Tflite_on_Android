@@ -51,7 +51,7 @@ public class Classifi_MainActivity extends AppCompatActivity {
     private Classifier classifier;
 
     private Executor executor = Executors.newSingleThreadExecutor();
-    private TextView textViewResult;
+    //private TextView textViewResult;
     private Button btnDetectObject, btnToggleCamera, speech;
     private ImageView imageViewResult;
     private CameraView cameraView;
@@ -75,8 +75,8 @@ public class Classifi_MainActivity extends AppCompatActivity {
         setContentView(R.layout.classifi_activity_main);
         cameraView = findViewById(R.id.cameraView);
         imageViewResult = findViewById(R.id.imageViewResult);
-        textViewResult = findViewById(R.id.textViewResult);
-        textViewResult.setMovementMethod(new ScrollingMovementMethod());
+        //textViewResult = findViewById(R.id.textViewResult);
+        //textViewResult.setMovementMethod(new ScrollingMovementMethod());
 
         btnToggleCamera = findViewById(R.id.btnToggleCamera);
         btnDetectObject = findViewById(R.id.btnDetectObject);
@@ -107,6 +107,86 @@ public class Classifi_MainActivity extends AppCompatActivity {
                 Log.d("test", title);
                 //SoundManager.cleanup();
                 mp.pause();
+                if(text.contains("masisneunmilk")) {
+                    text = "마시는우유";
+                }
+                else if(text.contains("mikis")){
+                    text = "밀키스";
+                }
+                else if(text.contains("mongshell")){
+                    text = "몽쉘";
+                }
+                else if(text.contains("ansungtangmyun")){
+                    text = "안성탕면";
+                }
+                else if(text.contains("cola")){
+                    text = "코카콜라";
+                }
+                else if(text.contains("chocosonge")){
+                    text = "초코송이";
+                }
+                else if(text.contains("chocoemong")){
+                    text = "초코에몽";
+                }
+                else if(text.contains("chilseong")){
+                    text = "칠성사이다";
+                }
+                else if(text.contains("chicchoc")){
+                    text = "칙촉";
+                }
+                else if(text.contains("buldarkbog")){
+                    text = "불닭볶음면";
+                }
+                else if(text.contains("bananamilk")){
+                    text = "바나나우유";
+                }else if(text.contains("trevi")){
+                    text = "트레비";
+                }
+                else if(text.contains("zzawang")){
+                    text = "짜왕";
+                }
+                else if(text.contains("shinramen")){
+                    text = "신라면";
+                }
+                else if(text.contains("sprite")){
+                    text = "스프라이트";
+                }
+                else if(text.contains("toreta")){
+                    text = "토레타";
+                }
+                else if(text.contains("welchis")){
+                    text = "웰치스";
+                }
+                else if(text.contains("seoulmilk")){
+                    text = "서울우유";
+                }
+                else if(text.contains("pocarisweat")){
+                    text = "포카리스웨트";
+                }
+                else if(text.contains("pocachip")){
+                    text = "포카칩";
+                }
+                else if(text.contains("lottebaebaero")){
+                    text = "롯데빼빼로";
+                }
+                else if(text.contains("jorypong")){
+                    text = "조리퐁";
+                }
+                else if(text.contains("hushmilk")){
+                    text = "허쉬우유";
+                }
+                else if(text.contains("homrunball")){
+                    text = "홈러본";
+                }
+                else if(text.contains("galbae")){
+                    text = "갈아만든배";
+                }
+                else if(text.contains("demisoda")){
+                    text = "데미소다";
+                }
+                else if(text.contains("dejawa")){
+                    text = "데자와";
+                }
                 tts.speak(text+"로 인식했습니다.", TextToSpeech.QUEUE_FLUSH, null);
                 /*
                 speech.setOnClickListener(new View.OnClickListener() {
@@ -120,7 +200,7 @@ public class Classifi_MainActivity extends AppCompatActivity {
                     }
                 });
                 */
-                textViewResult.setText(results.toString());
+                //textViewResult.setText(results.toString());
             }
 
             @Override

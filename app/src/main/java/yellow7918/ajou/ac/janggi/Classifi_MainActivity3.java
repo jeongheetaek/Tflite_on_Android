@@ -41,15 +41,17 @@ public class Classifi_MainActivity3 extends AppCompatActivity {
 
 
     //private static final String MODEL_PATH = "mobilenet_quant_v1_224.tflite`";
-    private static final String MODEL_PATH = "tflite_shop_graph.tflite";
-    private static final String LABEL_PATH = "shop_labels_final.txt";
+    //private static final String MODEL_PATH = "tflite_shop_final.tflite";
+    private static final String MODEL_PATH = "final_app.tflite";
+    //private static final String LABEL_PATH = "shop_labels_final.txt";
+    private static final String LABEL_PATH = "labels.txt";
 
-    private static final int INPUT_SIZE = 299;
+    private static final int INPUT_SIZE = 224;
 
     private Classifier classifier;
 
     private Executor executor = Executors.newSingleThreadExecutor();
-    private TextView textViewResult;
+    // private TextView textViewResult;
     private Button btnDetectObject, btnToggleCamera, speech;
     private ImageView imageViewResult;
     private CameraView cameraView;
@@ -73,8 +75,8 @@ public class Classifi_MainActivity3 extends AppCompatActivity {
         setContentView(R.layout.classifi_activity_main);
         cameraView = findViewById(R.id.cameraView);
         imageViewResult = findViewById(R.id.imageViewResult);
-        textViewResult = findViewById(R.id.textViewResult);
-        textViewResult.setMovementMethod(new ScrollingMovementMethod());
+        //textViewResult = findViewById(R.id.textViewResult);
+        //textViewResult.setMovementMethod(new ScrollingMovementMethod());
 
         btnToggleCamera = findViewById(R.id.btnToggleCamera);
         btnDetectObject = findViewById(R.id.btnDetectObject);
@@ -105,6 +107,102 @@ public class Classifi_MainActivity3 extends AppCompatActivity {
                 Log.d("test", title);
                 //SoundManager.cleanup();
                 mp.pause();
+                //if(original.contains("복지카드"))
+                /*else if(text.contains("crispydonuts")) {
+                    text = "크리스피도넛";
+                }else if(text.contains("lotteria")) {
+                    text = "롯데리아";
+                }else if(text.contains("mamstouch")) {
+                    text = "맘스터치";
+                }else if(text.contains("mcdonald")) {
+                    text = "맥도날드";
+                }else if(text.contains("starbucks")) {
+                    text = "스타벅스";
+                }else if(text.contains("baskinrabins")) {
+                    text = "베스킨라빈스";
+                }else if(text.contains("burgerking")) {
+                    text = "버거킹";
+                }*/
+                if(text.contains("masisneunmilk")) {
+                    text = "크리스피도넛";
+                }
+                else if(text.contains("mikis")){
+                    text = "크리스피도넛";
+                }
+                else if(text.contains("mongshell")){
+                    text = "크리스피도넛";
+                }
+                else if(text.contains("ansungtangmyun")){
+                    text = "크리스피도넛";
+                }
+                else if(text.contains("cola")){
+                    text = "크리스피도넛";
+                }
+                else if(text.contains("chocosonge")){
+                    text = "크리스피도넛";
+                }
+                else if(text.contains("chocoemong")){
+                    text = "롯데리아";
+                }
+                else if(text.contains("chilseong")){
+                    text = "롯데리아";
+                }
+                else if(text.contains("chicchoc")){
+                    text = "롯데리아";
+                }
+                else if(text.contains("buldarkbog")){
+                    text = "롯데리아";
+                }
+                else if(text.contains("bananamilk")){
+                    text = "맘스터치";
+                }else if(text.contains("trevi")){
+                    text = "맘스터치";
+                }
+                else if(text.contains("zzawang")){
+                    text = "맘스터치";
+                }
+                else if(text.contains("shinramen")){
+                    text = "맥도날드";
+                }
+                else if(text.contains("sprite")){
+                    text = "맥도날드";
+                }
+                else if(text.contains("toreta")){
+                    text = "맥도날드";
+                }
+                else if(text.contains("welchis")){
+                    text = "맥도날드";
+                }
+                else if(text.contains("seoulmilk")){
+                    text = "스타벅스";
+                }
+                else if(text.contains("pocarisweat")){
+                    text = "스타벅스";
+                }
+                else if(text.contains("pocachip")){
+                    text = "스타벅스";
+                }
+                else if(text.contains("lottebaebaero")){
+                    text = "스타벅스";
+                }
+                else if(text.contains("jorypong")){
+                    text = "스타벅스";
+                }
+                else if(text.contains("hushmilk")){
+                    text = "베스킨라빈스";
+                }
+                else if(text.contains("homrunball")){
+                    text = "베스킨라빈스";
+                }
+                else if(text.contains("galbae")){
+                    text = "버거킹";
+                }
+                else if(text.contains("demisoda")){
+                    text = "버거킹";
+                }
+                else if(text.contains("dejawa")){
+                    text = "버거킹";
+                }
                 tts.speak(text+"로 인식했습니다.", TextToSpeech.QUEUE_FLUSH, null);
 
                 /*
@@ -119,7 +217,7 @@ public class Classifi_MainActivity3 extends AppCompatActivity {
                     }
                 });
                 */
-                textViewResult.setText(results.toString());
+                //.setText(results.toString());
             }
 
             @Override

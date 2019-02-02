@@ -36,15 +36,17 @@ public class Classifi_MainActivity4 extends AppCompatActivity {
 
 
     //private static final String MODEL_PATH = "mobilenet_quant_v1_224.tflite`";
-    private static final String MODEL_PATH = "tflite_shop_graph.tflite";
-    private static final String LABEL_PATH = "shop_labels_final.txt";
+    private static final String MODEL_PATH = "final_app.tflite";
+    //private static final String MODEL_PATH = "tflite_shop_graph.tflite";
+    //private static final String LABEL_PATH = "cloth_labels2.txt";
+    private static final String LABEL_PATH = "labels.txt";
 
-    private static final int INPUT_SIZE = 299;
+    private static final int INPUT_SIZE = 224;
 
     private Classifier classifier;
 
     private Executor executor = Executors.newSingleThreadExecutor();
-    private TextView textViewResult;
+    //private TextView textViewResult;
     private Button btnDetectObject, btnToggleCamera, speech;
     private ImageView imageViewResult;
     private CameraView cameraView;
@@ -68,8 +70,8 @@ public class Classifi_MainActivity4 extends AppCompatActivity {
         setContentView(R.layout.classifi_activity_main);
         cameraView = findViewById(R.id.cameraView);
         imageViewResult = findViewById(R.id.imageViewResult);
-        textViewResult = findViewById(R.id.textViewResult);
-        textViewResult.setMovementMethod(new ScrollingMovementMethod());
+        //textViewResult = findViewById(R.id.textViewResult);
+        //textViewResult.setMovementMethod(new ScrollingMovementMethod());
 
         btnToggleCamera = findViewById(R.id.btnToggleCamera);
         btnDetectObject = findViewById(R.id.btnDetectObject);
@@ -100,6 +102,112 @@ public class Classifi_MainActivity4 extends AppCompatActivity {
                 Log.d("test", title);
                 //SoundManager.cleanup();
                 mp.pause();
+                /*if(text.contains("brightbalaws")) {
+                    text = "밝은 블라우스";
+                }else if(text.contains("brighthalf")) {
+                    text = "깔끔한 색의 반팔티";
+                }else if(text.contains("brightpadding")) {
+                    text = "밝은색 계열의 패딩";
+                }else if(text.contains("brightpants")) {
+                    text = "가벼운 느낌의 바지";
+                }else if(text.contains("brightshirts")) {
+                    text = "밝은 색의 셔츠";
+                }else if(text.contains("darkbalaws")) {
+                    text = "어두운 색의 블라우스";
+                }else if(text.contains("darkhalf")) {
+                    text = "무거운 느낌의 반팔티";
+                }else if(text.contains("darkpadding")) {
+                    text = "어두운 색의 패딩";
+                }else if(text.contains("darkpants")) {
+                    text = "어두운 색의 바지";
+                }else if(text.contains("darkshirts")) {
+                    text = "정갈한 느낌의 셔츠";
+                }else if(text.contains("darkskirts")) {
+                    text = "어두운 색의 치마";
+                }else if(text.contains("brightskirts")) {
+                    text = "밝은 색의 치마";
+                }
+                */
+                if(text.contains("masisneunmilk")) {
+                    text = "밝은 블라우스";
+                }
+                else if(text.contains("mikis")){
+                    text = "밝은 블라우스";
+                }
+                else if(text.contains("mongshell")){
+                    text = "밝은 블라우스";
+                }
+                else if(text.contains("ansungtangmyun")){
+                    text = "밝은 블라우스";
+                }
+                else if(text.contains("cola")){
+                    text = "밝은 블라우스";
+                }
+                else if(text.contains("chocosonge")){
+                    text = "밝은 블라우스";
+                }
+                else if(text.contains("chocoemong")){
+                    text = "밝은 블라우스";
+                }
+                else if(text.contains("chilseong")){
+                    text = "밝은 색의 치마";
+                }
+                else if(text.contains("chicchoc")){
+                    text = "밝은 색의 치마";
+                }
+                else if(text.contains("buldarkbog")){
+                    text = "밝은 색의 치마";
+                }
+                else if(text.contains("bananamilk")){
+                    text = "어두운 색의 치마";
+                }else if(text.contains("trevi")){
+                    text = "어두운 색의 치마";
+                }
+                else if(text.contains("zzawang")){
+                    text = "어두운 색의 치마";
+                }
+                else if(text.contains("shinramen")){
+                    text = "정갈한 느낌의 셔츠";
+                }
+                else if(text.contains("sprite")){
+                    text = "정갈한 느낌의 셔츠";
+                }
+                else if(text.contains("toreta")){
+                    text = "어두운 색의 바지";
+                }
+                else if(text.contains("welchis")){
+                    text = "어두운 색의 바지";
+                }
+                else if(text.contains("seoulmilk")){
+                    text = "무거운 느낌의 반팔티";
+                }
+                else if(text.contains("pocarisweat")){
+                    text = "무거운 느낌의 반팔티";
+                }
+                else if(text.contains("pocachip")){
+                    text = "어두운 색의 블라우스";
+                }
+                else if(text.contains("lottebaebaero")){
+                    text = "가벼운 느낌의 바지";
+                }
+                else if(text.contains("jorypong")){
+                    text = "밝은색 계열의 패딩";
+                }
+                else if(text.contains("hushmilk")){
+                    text = "밝은색 계열의 패딩";
+                }
+                else if(text.contains("homrunball")){
+                    text = "깔끔한 색의 반팔티";
+                }
+                else if(text.contains("galbae")){
+                    text = "깔끔한 색의 반팔티";
+                }
+                else if(text.contains("demisoda")){
+                    text = "깔끔한 색의 반팔티";
+                }
+                else if(text.contains("dejawa")){
+                    text = "깔끔한 색의 반팔티";
+                }
                 tts.speak(text+"로 인식했습니다.", TextToSpeech.QUEUE_FLUSH, null);
 
                 /*
@@ -114,7 +222,7 @@ public class Classifi_MainActivity4 extends AppCompatActivity {
                     }
                 });
                 */
-                textViewResult.setText(results.toString());
+                //textViewResult.setText(results.toString());
             }
 
             @Override
