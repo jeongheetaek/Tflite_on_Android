@@ -64,7 +64,7 @@ public class TabFragment extends AppCompatActivity {
     private static final String ANDROID_PACKAGE_HEADER = "X-Android-Package";
     private static final int MAX_LABEL_RESULTS = 10;
     private static final int MAX_DIMENSION = 1200;
-
+    private static StringBuilder message;
     private static final String TAG = TabFragment.class.getSimpleName();
     private static final int GALLERY_PERMISSIONS_REQUEST = 0;
     private static final int GALLERY_IMAGE_REQUEST = 1;
@@ -81,6 +81,7 @@ public class TabFragment extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         /*SoundManager.getInstance();
         SoundManager.initSounds(this);
         SoundManager.loadSounds();*/
@@ -108,7 +109,7 @@ public class TabFragment extends AppCompatActivity {
                 tts.speak("인식된 내용을 공유하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
                 Intent intent = new Intent(new Intent(android.content.Intent.ACTION_SEND));
                 intent.setType("text/plain");
-                String text = "원하는 숫자를 입력하세요";
+                String text = message.toString();//"원하는 숫자를 입력하세요";
                 intent.putExtra(Intent.EXTRA_TEXT, text);
 
                 Intent chooser = Intent.createChooser(intent, "공유하기");
@@ -122,6 +123,7 @@ public class TabFragment extends AppCompatActivity {
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view -> {
+            fab.hide();
             AlertDialog.Builder builder = new AlertDialog.Builder(TabFragment.this);
             builder
                     .setMessage(R.string.dialog_select_prompt)
@@ -132,7 +134,7 @@ public class TabFragment extends AppCompatActivity {
         });
 
         mImageDetails = findViewById(R.id.image_details);
-        mMainImage = findViewById(R.id.main_image);
+        //mMainImage = findViewById(R.id.main_image);
         //speech = findViewById(R.id.speak);
     }
 
@@ -168,6 +170,7 @@ public class TabFragment extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == GALLERY_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
@@ -208,7 +211,7 @@ public class TabFragment extends AppCompatActivity {
                                 MAX_DIMENSION);
 
                 callCloudVision(bitmap);
-                mMainImage.setImageBitmap(bitmap);
+                //mMainImage.setImageBitmap(bitmap);
 
             } catch (IOException e) {
                 Log.d(TAG, "Image picking failed because " + e.getMessage());
@@ -322,8 +325,10 @@ public class TabFragment extends AppCompatActivity {
             if (activity != null && !activity.isFinishing()) {
                 TextView imageDetail = activity.findViewById(R.id.image_details);
                 imageDetail.setText(result);
+                //fab.hide();
                 mp.pause();
                 tts.speak(result,TextToSpeech.QUEUE_FLUSH, null);
+                //fab.show();
 
 
             }
@@ -370,7 +375,7 @@ public class TabFragment extends AppCompatActivity {
 
     private static String convertResponseToString(BatchAnnotateImagesResponse response) {
 
-        StringBuilder message = new StringBuilder("숫자를 인식했습니다.\n\n");
+        message = new StringBuilder("숫자를 인식했습니다.\n\n");
 
         List<EntityAnnotation> labels = response.getResponses().get(0).getTextAnnotations();
         if (labels != null) {
@@ -391,6 +396,7 @@ public class TabFragment extends AppCompatActivity {
         }
 
         return message.toString();
+
     }
     @Override
     public void onDestroy(){

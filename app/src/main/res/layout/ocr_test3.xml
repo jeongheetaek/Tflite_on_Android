@@ -28,11 +28,6 @@
                 android:layout_marginBottom="8dp"
                 android:text="인식할 글자를 선택해주세요."/>
 
-            <ImageView
-                android:id="@+id/main_image"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:scaleType="fitCenter"/>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         intent1.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP| Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         PendingIntent pendingNotificationIntent = PendingIntent.getActivity( MainActivity.this,0, intent1,PendingIntent.FLAG_UPDATE_CURRENT);
-        builder.setSmallIcon(R.drawable.logo).setTicker("아이리스 알림").setWhen(System.currentTimeMillis())
+        builder.setSmallIcon(R.drawable.icon).setTicker("아이리스 알림").setWhen(System.currentTimeMillis())
                 .setNumber(1).setContentTitle("아이리스 맞춤공고 알림").setContentText("새로운 맞춤공고가 도착했습니다")
                 .setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE).setContentIntent(pendingNotificationIntent).setAutoCancel(true).setOngoing(true);
 

@@ -65,7 +65,7 @@ public class TabFragment2 extends AppCompatActivity {
     private static final String ANDROID_PACKAGE_HEADER = "X-Android-Package";
     private static final int MAX_LABEL_RESULTS = 10;
     private static final int MAX_DIMENSION = 1200;
-
+    private static StringBuilder message;
     private static final String TAG = TabFragment2.class.getSimpleName();
     private static final int GALLERY_PERMISSIONS_REQUEST = 0;
     private static final int GALLERY_IMAGE_REQUEST = 1;
@@ -109,7 +109,7 @@ public class TabFragment2 extends AppCompatActivity {
                 tts.speak("인식된 내용을 공유하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
                 Intent intent = new Intent(new Intent(android.content.Intent.ACTION_SEND));
                 intent.setType("text/plain");
-                String text = "원하는 텍스트를 입력하세요";
+                String text = message.toString();//"원하는 텍스트를 입력하세요";
                 intent.putExtra(Intent.EXTRA_TEXT, text);
 
                 Intent chooser = Intent.createChooser(intent, "공유하기");
@@ -123,6 +123,7 @@ public class TabFragment2 extends AppCompatActivity {
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view -> {
+            fab.hide();
             AlertDialog.Builder builder = new AlertDialog.Builder(TabFragment2.this);
             builder
                     .setMessage(R.string.dialog_select_prompt)
@@ -133,7 +134,7 @@ public class TabFragment2 extends AppCompatActivity {
         });
 
         mImageDetails = findViewById(R.id.image_details);
-        mMainImage = findViewById(R.id.main_image);
+        //mMainImage = findViewById(R.id.main_image);
         //speech = findViewById(R.id.speak);
     }
 
@@ -209,7 +210,7 @@ public class TabFragment2 extends AppCompatActivity {
                                 MAX_DIMENSION);
 
                 callCloudVision(bitmap);
-                mMainImage.setImageBitmap(bitmap);
+                //mMainImage.setImageBitmap(bitmap);
 
             } catch (IOException e) {
                 Log.d(TAG, "Image picking failed because " + e.getMessage());
@@ -371,7 +372,7 @@ public class TabFragment2 extends AppCompatActivity {
 
     private static String convertResponseToString(BatchAnnotateImagesResponse response) {
 
-        StringBuilder message = new StringBuilder("글자를 인식했습니다.\n\n");
+        message = new StringBuilder("글자를 인식했습니다.\n\n");
 
         List<EntityAnnotation> labels = response.getResponses().get(0).getTextAnnotations();
         if (labels != null) {
@@ -387,7 +388,6 @@ public class TabFragment2 extends AppCompatActivity {
             message.append("인식된 글자가 없습니다.");
             tts.speak("인식된 글자가 없습니다.",TextToSpeech.QUEUE_FLUSH, null);
         }
-
         return message.toString();
     }
     @Override

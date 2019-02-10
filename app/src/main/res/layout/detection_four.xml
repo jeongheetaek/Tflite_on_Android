@@ -1,123 +1,103 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:largeHeap="true"
-    android:hardwareAccelerated="false"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".SignUpActivity"
-    android:background="@drawable/show">
+    android:layout_height="match_parent">
 
-
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="#d1d3c0"
+        android:fillViewport="true"
         android:gravity="center"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/house_detect"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:adjustViewBounds="true"
-            android:baselineAligned="false"
-            android:scaleType="fitCenter"
-            android:src="@drawable/normal" />
-
-        <ImageView
-            android:id="@+id/con_detect"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:adjustViewBounds="true"
-            android:baselineAligned="false"
-            android:scaleType="fitCenter"
-            android:src="@drawable/conve" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/barcode"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:adjustViewBounds="true"
-            android:baselineAligned="false"
-            android:scaleType="fitCenter"
-            android:src="@drawable/go" />
-
-        <ImageView
-            android:id="@+id/clothes"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:adjustViewBounds="true"
-            android:baselineAligned="false"
-            android:scaleType="fitCenter"
-            android:src="@drawable/clo" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/number"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:adjustViewBounds="true"
-            android:baselineAligned="false"
-            android:scaleType="fitCenter"
-            android:src="@drawable/number" />
-
-        <ImageView
-            android:id="@+id/text"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:adjustViewBounds="true"
-            android:baselineAligned="false"
-            android:scaleType="fitCenter"
-            android:src="@drawable/text" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/situation"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:adjustViewBounds="true"
-            android:baselineAligned="false"
-            android:scaleType="fitCenter"
-            android:src="@drawable/situation" />
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        tools:context=".SignUpActivity">
 
         <ImageView
             android:id="@+id/comm"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:baselineAligned="false"
             android:scaleType="centerCrop"
-            android:src="@drawable/sound" />
+            android:background="#9fa095"
+            android:src="@drawable/voi" />
+
+
+        <ImageView
+            android:id="@+id/house_detect"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:baselineAligned="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/nor" />
+
+        <ImageView
+            android:id="@+id/con_detect"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:baselineAligned="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/cov" />
+
+
+        <ImageView
+            android:id="@+id/barcode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:baselineAligned="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/mac" />
+
+        <ImageView
+            android:id="@+id/clothes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:baselineAligned="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/clo2" />
+
+
+        <ImageView
+            android:id="@+id/number"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:baselineAligned="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/numb" />
+
+        <ImageView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:baselineAligned="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/tex" />
+
+
+        <ImageView
+            android:id="@+id/situation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:baselineAligned="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/sit" />
+
 
     </LinearLayout>
-
-
-</LinearLayout>
+</ScrollView>

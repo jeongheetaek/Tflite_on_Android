@@ -236,9 +236,10 @@ public class SelectFunction extends AppCompatActivity {
                 startActivity(intent);
             }else if (mResult.contains("상황")) {
                 tts.speak("상황 인식 기능은 잠겨있습니다.", TextToSpeech.QUEUE_FLUSH, null);
-                Intent intent = new Intent(
+                /*Intent intent = new Intent(
                         getApplicationContext(), SelectFunction.class);
                 startActivity(intent);
+                */
             }else if (mResult.contains("나가기")) {
                 tts.speak("음성인식 기능을 종료합니다.", TextToSpeech.QUEUE_FLUSH, null);
             } else {

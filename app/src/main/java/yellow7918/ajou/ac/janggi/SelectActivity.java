@@ -1,12 +1,20 @@
 package yellow7918.ajou.ac.janggi;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.speech.tts.TextToSpeech;
+import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NotificationCompatSideChannelService;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,6 +26,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.nio.channels.SelectableChannel;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -28,14 +37,20 @@ public class SelectActivity extends AppCompatActivity{
     TextToSpeech tts;
     public Intent i;
     SpeechRecognizer mRecognizer;
+    private View mLayout;
+    private static final int PERMISSIONS_REQUEST_CODE = 100;
+    String[] REQUIRED_PERMISSIONS  = {Manifest.permission.RECORD_AUDIO};
 
-    private static ProgressBar progressBar;
+
+
+    //int writeExternalStoragePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+    private static ProgressBar progressbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.select_main);
-        progressBar = findViewById(R.id.progressBar3);
 
+        setContentView(R.layout.select_main);
+        progressbar = findViewById(R.id.progressBar3);
         tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
@@ -83,20 +98,40 @@ public class SelectActivity extends AppCompatActivity{
         //Recognizer 사용
         mRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
         mRecognizer.setRecognitionListener(listener);
+        int cameraPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO);
 
         ImageView e=(ImageView)findViewById((R.id.infobttn));
         //Button c = (Button)findViewById(R.id.infobtn);
         e.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick (View view) {
-                tts.speak("음성인식을 실행하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
-                try {
-                    Thread.sleep(2300);
-                } catch (InterruptedException e1) {
-                    e1.printStackTrace();
+            public void onClick(View view) {
+                if (cameraPermission == PackageManager.PERMISSION_GRANTED) {
+                    tts.speak("음성인식을 실행하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                    progressbar.setVisibility(View.VISIBLE);
+                    try {
+                        Thread.sleep(2200);
+                        //mRecognizer.startListening(i);
+                    } catch (InterruptedException e1) {
+                        e1.printStackTrace();
+                    }
+                    //progressbar.setVisibility(View.GONE);
+                    mRecognizer.startListening(i);
                 }
-                progressBar.setVisibility(View.VISIBLE);
-                mRecognizer.startListening(i);
+                else
+                {
+                    ActivityCompat.requestPermissions( SelectActivity.this, REQUIRED_PERMISSIONS, PERMISSIONS_REQUEST_CODE);
+                    tts.speak("음성인식을 실행하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                    //progressbar.setVisibility(View.VISIBLE);
+                    try {
+                        Thread.sleep(2200);
+                        //mRecognizer.startListening(i);
+                    } catch (InterruptedException e1) {
+                        e1.printStackTrace();
+                    }
+
+                    mRecognizer.startListening(i);
+                    progressbar.setVisibility(View.GONE);
+                }
             }
         });
     }
@@ -112,7 +147,7 @@ public class SelectActivity extends AppCompatActivity{
         //지금은 음성인식 결과가 HelloWorld!!부분에 들어가게 코딩됨
         @Override
         public void onResults(Bundle results) {
-            progressBar.setVisibility(View.VISIBLE);
+            //progressBar.setVisibility(View.VISIBLE);
             String key = "";
             key = SpeechRecognizer.RESULTS_RECOGNITION;
             ArrayList<String> mResult = results.getStringArrayList(key);
@@ -121,14 +156,14 @@ public class SelectActivity extends AppCompatActivity{
             //TextView tv = (TextView) findViewById(R.id.textView);
             //tv.setText(""+rs[0]);
 
-            if(mResult.contains("사물인식")){
-                tts.speak("사물 인식 기능을 실행하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
+            if(mResult.contains("인식")){
+                tts.speak("인식기능을 실행하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
                 Intent intent = new Intent(
                         getApplicationContext(), SelectFunction.class);
                 startActivity(intent);
             }
-            else if(mResult.contains("장애인정보")){
-                tts.speak("장애인 관련 필요정보를 확인하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
+            else if(mResult.contains("정보")){
+                tts.speak("장애인관련 필요정보를 확인하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
                 Intent intent = new Intent(
                         getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
@@ -137,7 +172,7 @@ public class SelectActivity extends AppCompatActivity{
                 tts.speak("음성인식 기능을 종료합니다.", TextToSpeech.QUEUE_FLUSH, null);
             }
             else {
-                tts.speak("다시 한 번 정확하게 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                tts.speak("다시 한번 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
             }
 
 
