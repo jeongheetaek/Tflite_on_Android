@@ -37,8 +37,10 @@ public class Classifi_MainActivity4 extends AppCompatActivity {
 
     //private static final String MODEL_PATH = "final_app.tflite";
     //private static final String LABEL_PATH = "labels.txt";
-    private static final String MODEL_PATH = "optimized_graph.tflite";
-    private static final String LABEL_PATH = "retrained_labels.txt";
+    //private static final String MODEL_PATH = "optimized_graph.tflite";
+    //private static final String LABEL_PATH = "retrained_labels.txt";
+    private static final String MODEL_PATH = "color.tflite";
+    private static final String LABEL_PATH = "color_labels.txt";
 
     private static final int INPUT_SIZE = 224;
 
