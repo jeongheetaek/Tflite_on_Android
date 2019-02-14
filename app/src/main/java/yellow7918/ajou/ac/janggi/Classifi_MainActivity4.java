@@ -35,12 +35,10 @@ public class Classifi_MainActivity4 extends AppCompatActivity {
     private MediaPlayer mp;
 
 
-    //private static final String MODEL_PATH = "final_app.tflite";
-    //private static final String LABEL_PATH = "labels.txt";
+    private static final String MODEL_PATH = "final_app.tflite";
+    private static final String LABEL_PATH = "labels.txt";
     //private static final String MODEL_PATH = "optimized_graph.tflite";
     //private static final String LABEL_PATH = "retrained_labels.txt";
-    private static final String MODEL_PATH = "color.tflite";
-    private static final String LABEL_PATH = "color_labels.txt";
 
     private static final int INPUT_SIZE = 224;
 
@@ -103,6 +101,7 @@ public class Classifi_MainActivity4 extends AppCompatActivity {
                 Log.d("test", title);
                 //SoundManager.cleanup();
                 mp.pause();
+
                 /*if(text.contains("brightbalaws")) {
                     text = "밝은 블라우스";
                 }else if(text.contains("brighthalf")) {
@@ -128,7 +127,7 @@ public class Classifi_MainActivity4 extends AppCompatActivity {
                 }else if(text.contains("brightskirts")) {
                     text = "밝은 색의 치마";
                 }
-                */
+                *//////////////////////////////////////////////////
                 if(text.contains("masisneunmilk")) {
                     text = "밝은 블라우스";
                 }
@@ -209,20 +208,9 @@ public class Classifi_MainActivity4 extends AppCompatActivity {
                 else if(text.contains("dejawa")){
                     text = "깔끔한 색의 반팔티";
                 }
+
                 tts.speak(text+"로 인식했습니다.", TextToSpeech.QUEUE_FLUSH, null);
 
-                /*
-                speech.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        String text = title;
-                        Log.d("test", title);
-                        Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
-                        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
-
-                    }
-                });
-                */
                 //textViewResult.setText(results.toString());
             }
 

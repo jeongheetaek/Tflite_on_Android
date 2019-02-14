@@ -40,11 +40,14 @@
         <activity android:name=".Classifi_MainActivity2" />
         <activity android:name=".Classifi_MainActivity3" />
         <activity android:name=".Classifi_MainActivity4" />
+        <activity android:name=".Classifi_MainActivity5" />
+        <activity android:name=".Classifi_MainActivity6" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".SignUpActivity2" />
         <activity android:name=".SignUpActivity3" />
         <activity android:name=".SelectFunction" />
+        <activity android:name=".SelectFunction2" />
         <activity android:name=".Voice" />
         <activity android:name=".TabFragment2"/>
         <activity android:name=".TabFragment"/>

@@ -1,0 +1,92 @@
+<ScrollView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:fillViewport="true"
+        android:gravity="center"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        tools:context=".SignUpActivity">
+
+        <ImageView
+            android:id="@+id/comm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:baselineAligned="false"
+            android:scaleType="centerCrop"
+            android:background="#9fa095"
+            android:src="@drawable/sub1" />
+
+
+        <ImageView
+            android:id="@+id/house_detect"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:baselineAligned="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/sub2" />
+
+        <ImageView
+            android:id="@+id/con_detect"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:baselineAligned="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/sub3" />
+
+
+        <ImageView
+            android:id="@+id/barcode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:baselineAligned="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/sub4" />
+
+        <ImageView
+            android:id="@+id/clothes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:baselineAligned="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/sub5" />
+
+        <ImageView
+            android:id="@+id/conv5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:baselineAligned="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/sub3" />
+
+
+        <ImageView
+            android:id="@+id/color"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:baselineAligned="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/color3" />
+
+    </LinearLayout>
+</ScrollView>

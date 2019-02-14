@@ -9,7 +9,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#d1d3c0"
+        android:background="#ffffff"
         android:fillViewport="true"
         android:gravity="center"
         android:hardwareAccelerated="false"
@@ -69,6 +69,16 @@
             android:scaleType="fitCenter"
             android:src="@drawable/clo2" />
 
+        <ImageView
+            android:id="@+id/conv5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:baselineAligned="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/cov" />
+
+
 
         <ImageView
             android:id="@+id/number"
@@ -98,6 +108,14 @@
             android:scaleType="fitCenter"
             android:src="@drawable/sit" />
 
+        <ImageView
+            android:id="@+id/color"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:baselineAligned="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/color3" />
 
     </LinearLayout>
 </ScrollView>

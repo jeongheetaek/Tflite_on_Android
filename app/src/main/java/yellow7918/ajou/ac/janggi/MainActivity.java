@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    /*
     @Override
     public void onBackPressed() {
         if (fm.getBackStackEntryCount() == 0) {
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
-
+    */
     public void changeFragment(Fragment fragment) {
         fm.beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
     }

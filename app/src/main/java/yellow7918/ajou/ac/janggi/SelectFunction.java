@@ -74,13 +74,11 @@ public class SelectFunction extends AppCompatActivity {
             }
         });
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.detection_four);
+        setContentView(R.layout.detection_four2);
 
 
         ImageView a = (ImageView) findViewById((R.id.con_detect));
-        //Intent intent = getIntent();
-        //a.setImageResource(intent.getIntExtra()));
-        //Button a = (Button)findViewById(R.id.con_detect);
+        a.setContentDescription("편의점 상품 인식");
         a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,9 +88,8 @@ public class SelectFunction extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        //Button b = (Button)findViewById(R.id.house_detect);
         ImageView b = (ImageView) findViewById((R.id.house_detect));
+        b.setContentDescription("일반 사물인식");
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,9 +99,8 @@ public class SelectFunction extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        //Button c = (Button)findViewById(R.id.barcode);
         ImageView c = (ImageView) findViewById((R.id.barcode));
+        c.setContentDescription("매장인식");
         c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,41 +110,8 @@ public class SelectFunction extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        //Button d = (Button)findViewById(R.id.text);
-        ImageView e = (ImageView) findViewById((R.id.situation));
-        e.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                tts.speak("상황 인식 기능은 잠겨있습니다.", TextToSpeech.QUEUE_FLUSH, null);
-                Intent intent = new Intent(
-                        getApplicationContext(), SelectFunction.class);
-                startActivity(intent);
-            }
-        });
-        //Button d = (Button)findViewById(R.id.text);
-        ImageView f = (ImageView) findViewById((R.id.number));
-        f.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                tts.speak("숫자 인식 기능을 실행하겠습니다. 인식을 위해 문서를 선택해주세요.", TextToSpeech.QUEUE_FLUSH, null);
-                Intent intent = new Intent(
-                        getApplicationContext(), TabFragment.class);
-                startActivity(intent);
-            }
-        });
-        //Button d = (Button)findViewById(R.id.text);
-        ImageView d = (ImageView) findViewById((R.id.text));
-        d.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                tts.speak("글자 인식 기능을 실행하겠습니다. 인식을 위해 문서를 선택해주세요.", TextToSpeech.QUEUE_FLUSH, null);
-                Intent intent = new Intent(
-                        getApplicationContext(), TabFragment2.class);
-                startActivity(intent);
-            }
-        });
-
         ImageView k = (ImageView) findViewById((R.id.clothes));
+        k.setContentDescription("옷 찾기");
         k.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -158,7 +121,28 @@ public class SelectFunction extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        ImageView t = (ImageView) findViewById((R.id.conv5));
+        t.setContentDescription("편의점 상품 찾기");
+        t.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tts.speak("편의점 상품 찾기 기능을 실행하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                Intent intent = new Intent(
+                        getApplicationContext(), Classifi_MainActivity5.class);
+                startActivity(intent);
+            }
+        });
+        ImageView w = (ImageView) findViewById((R.id.color));
+        w.setContentDescription("색 찾기");
+        w.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tts.speak("색 찾기 기능을 실행하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                Intent intent = new Intent(
+                        getApplicationContext(), Classifi_MainActivity6.class);
+                startActivity(intent);
+            }
+        });
         i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         i.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, getPackageName());
         //음성 인식언어 설정   kr-KR 이니까 한국어
@@ -168,6 +152,7 @@ public class SelectFunction extends AppCompatActivity {
         mRecognizer.setRecognitionListener(listener);
 
         ImageView z = (ImageView) findViewById((R.id.comm));
+        z.setContentDescription("음성인식");
         z.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -234,16 +219,18 @@ public class SelectFunction extends AppCompatActivity {
                 Intent intent = new Intent(
                         getApplicationContext(), TabFragment2.class);
                 startActivity(intent);
-            }else if (mResult.contains("상황")) {
-                tts.speak("상황 인식 기능은 잠겨있습니다.", TextToSpeech.QUEUE_FLUSH, null);
-                /*Intent intent = new Intent(
-                        getApplicationContext(), SelectFunction.class);
-                startActivity(intent);
-                */
             }else if (mResult.contains("나가기")) {
                 tts.speak("음성인식 기능을 종료합니다.", TextToSpeech.QUEUE_FLUSH, null);
             } else {
                 tts.speak("다시 한 번 정확하게 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                try {
+                    Thread.sleep(1500);
+                    //mRecognizer.startListening(i);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+                //progressbar.setVisibility(View.GONE);
+                mRecognizer.startListening(i);
             }
 
 

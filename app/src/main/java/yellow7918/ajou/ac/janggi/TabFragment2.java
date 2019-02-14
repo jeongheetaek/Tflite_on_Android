@@ -102,7 +102,7 @@ public class TabFragment2 extends AppCompatActivity {
         setContentView(R.layout.ocr_test2);
 
         ImageView a=(ImageView)findViewById((R.id.share));
-
+        a.setContentDescription("공유하기");
         a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View view) {
@@ -122,6 +122,7 @@ public class TabFragment2 extends AppCompatActivity {
 
 
         FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setContentDescription("문서찾기");
         fab.setOnClickListener(view -> {
             fab.hide();
             AlertDialog.Builder builder = new AlertDialog.Builder(TabFragment2.this);
