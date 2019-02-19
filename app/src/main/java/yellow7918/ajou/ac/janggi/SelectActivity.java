@@ -36,6 +36,7 @@ import static android.media.AudioManager.ERROR;
 public class SelectActivity extends AppCompatActivity{
     TextToSpeech tts;
     public Intent i;
+    private static int count_t=0;
     SpeechRecognizer mRecognizer;
     private View mLayout;
     private static final int PERMISSIONS_REQUEST_CODE = 100;
@@ -63,11 +64,23 @@ public class SelectActivity extends AppCompatActivity{
 
         tts.speak("음성인식 기능을 위해 화면을 터치해주세요.", TextToSpeech.QUEUE_FLUSH, null);
 
+
         super .onCreate(savedInstanceState);
         setContentView(R.layout.select_main2);
+        ImageView h=(ImageView)findViewById((R.id.help));
+        h.setContentDescription("앱 사용 도움말");
+        h.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View view) {
+                tts.speak("아이리스 앱은 인공지능 기술이 사용된 보조공학기구입니다. 사물과 문서를 인식할 수 있고 장애인에게 필요한 정보를 한번에 확인할 수 있도록 되어있습니다. 모든 기능은 " +
+                        "음성인식으로 실행이 가능합니다. 먼저, 사물인식은 사물을 카메라에 비추면 음성으로 사물에 대한 정보를 전달합니다." +
+                        "또한 문서를 앨범에서 선택하거나 사진을 찍어 숫자와 글자를 음성으로 전달받고, 문서 내용을 주변사람들과 공유할 수 있도록 합니다. " +
+                        "사용 전 Talkback 기능을 활성화해주시고, 음성 속도는 빠름으로 설정해주시기 바랍니다.", TextToSpeech.QUEUE_FLUSH, null);
+            }
+        });
+
         ImageView b=(ImageView)findViewById((R.id.detectbtn));
         b.setContentDescription("사물인식");
-        //Button b = (Button)findViewById(R.id.detectbtn);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View view) {
@@ -90,6 +103,7 @@ public class SelectActivity extends AppCompatActivity{
             }
         });
         ImageView d=(ImageView)findViewById((R.id.numbtn));
+
         //Button c = (Button)findViewById(R.id.infobtn);
         d.setContentDescription("문서인식");
         d.setOnClickListener(new View.OnClickListener() {
@@ -132,31 +146,60 @@ public class SelectActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 if (cameraPermission == PackageManager.PERMISSION_GRANTED) {
-                    tts.speak("음성인식을 실행하겠습니다. 사물인식은 사물, 문서인식은 문서, 장애인정보 확인은 정보라고 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
-                    progressbar.setVisibility(View.VISIBLE);
-                    try {
-                        Thread.sleep(5500);
-                        //mRecognizer.startListening(i);
-                    } catch (InterruptedException e1) {
-                        e1.printStackTrace();
+                    if(count_t==0) {
+                        tts.speak("음성인식을 실행하겠습니다. 사물인식은 사물, 문서인식은 문서, 장애인정보 확인은 정보라고 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                        progressbar.setVisibility(View.VISIBLE);
+                        try {
+                            Thread.sleep(6000);
+                            //mRecognizer.startListening(i);
+                        } catch (InterruptedException e1) {
+                            e1.printStackTrace();
+                        }
+                        //progressbar.setVisibility(View.GONE);
+                        mRecognizer.startListening(i);
+                        count_t++;
                     }
-                    //progressbar.setVisibility(View.GONE);
-                    mRecognizer.startListening(i);
+                    else {
+                        tts.speak("음성인식을 실행하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                        progressbar.setVisibility(View.VISIBLE);
+                        try {
+                            Thread.sleep(1300);
+                            //mRecognizer.startListening(i);
+                        } catch (InterruptedException e1) {
+                            e1.printStackTrace();
+                        }
+                        //progressbar.setVisibility(View.GONE);
+                        mRecognizer.startListening(i);
+                    }
                 }
                 else
                 {
                     ActivityCompat.requestPermissions( SelectActivity.this, REQUIRED_PERMISSIONS, PERMISSIONS_REQUEST_CODE);
-                    tts.speak("음성인식을 실행하겠습니다. 사물인식은 사물, 문서인식은 문서, 장애인정보 확인은 정보라고 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
-                    //progressbar.setVisibility(View.VISIBLE);
-                    try {
-                        Thread.sleep(5500);
-                        //mRecognizer.startListening(i);
-                    } catch (InterruptedException e1) {
-                        e1.printStackTrace();
+                    if(count_t==0) {
+                        tts.speak("음성인식을 실행하겠습니다. 사물인식은 사물, 문서인식은 문서, 장애인정보 확인은 정보라고 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                        progressbar.setVisibility(View.VISIBLE);
+                        try {
+                            Thread.sleep(6000);
+                            //mRecognizer.startListening(i);
+                        } catch (InterruptedException e1) {
+                            e1.printStackTrace();
+                        }
+                        //progressbar.setVisibility(View.GONE);
+                        mRecognizer.startListening(i);
+                        count_t++;
                     }
-
-                    mRecognizer.startListening(i);
-                    progressbar.setVisibility(View.GONE);
+                    else {
+                        tts.speak("음성인식을 실행하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                        progressbar.setVisibility(View.VISIBLE);
+                        try {
+                            Thread.sleep(1300);
+                            //mRecognizer.startListening(i);
+                        } catch (InterruptedException e1) {
+                            e1.printStackTrace();
+                        }
+                        //progressbar.setVisibility(View.GONE);
+                        mRecognizer.startListening(i);
+                    }
                 }
             }
         });
@@ -183,7 +226,7 @@ public class SelectActivity extends AppCompatActivity{
             //tv.setText(""+rs[0]);
 
             if(mResult.contains("사물")){
-                tts.speak("인식기능을 실행하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                tts.speak("사물인식 기능을 실행하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
                 Intent intent = new Intent(
                         getApplicationContext(), SelectFunction.class);
                 startActivity(intent);
@@ -211,10 +254,8 @@ public class SelectActivity extends AppCompatActivity{
             }
             else {
                 tts.speak("다시 한번 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
-                //tts.speak("음성인식을 실행하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
-                progressbar.setVisibility(View.VISIBLE);
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(1300);
                     //mRecognizer.startListening(i);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
@@ -252,6 +293,7 @@ public class SelectActivity extends AppCompatActivity{
             if(error == mRecognizer.ERROR_NETWORK_TIMEOUT){
                 Toast.makeText(getApplicationContext(),"인터넷이 연결되지 않았습니다.",Toast.LENGTH_SHORT).show(); //네트워크 타임아웃 에러
                 tts.speak("인터넷을 연결해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+
             }
             else if(error == mRecognizer.ERROR_NETWORK){
                 Toast.makeText(getApplicationContext(),"인터넷이 연결되지 않았습니다.",Toast.LENGTH_SHORT).show(); //네트워크 에러
@@ -261,35 +303,79 @@ public class SelectActivity extends AppCompatActivity{
             else if(error == mRecognizer.ERROR_AUDIO){
                 Toast.makeText(getApplicationContext(),"녹음에러 다시 한 번 말씀해주세요.",Toast.LENGTH_SHORT).show(); //녹음 에러
                 tts.speak("다시 한 번 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                try {
+                    Thread.sleep(1300);
+                    //mRecognizer.startListening(i);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+                //progressbar.setVisibility(View.GONE);
+                mRecognizer.startListening(i);
             }
 
             else if(error == mRecognizer.ERROR_SERVER){
                 Toast.makeText(getApplicationContext(),"서버에러 다시 한 번 말씀해주세요.",Toast.LENGTH_SHORT).show(); //서버 에러
                 tts.speak("다시 한 번 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                try {
+                    Thread.sleep(1300);
+                    //mRecognizer.startListening(i);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+                //progressbar.setVisibility(View.GONE);
+                mRecognizer.startListening(i);
             }
 
             else if(error == mRecognizer.ERROR_CLIENT){
                 Toast.makeText(getApplicationContext(),"클라 다시 한 번 말씀해주세요.",Toast.LENGTH_SHORT).show(); //클라이언트 에러
                 tts.speak("다시 한 번 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                try {
+                    Thread.sleep(1300);
+                    //mRecognizer.startListening(i);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+                //progressbar.setVisibility(View.GONE);
+                mRecognizer.startListening(i);
             }
             else if(error == mRecognizer.ERROR_SPEECH_TIMEOUT){
                 Toast.makeText(getApplicationContext(),"다시 한 번 말씀해주세요.",Toast.LENGTH_SHORT).show();
                 tts.speak("다시 한 번 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                try {
+                    Thread.sleep(1300);
+                    //mRecognizer.startListening(i);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+                //progressbar.setVisibility(View.GONE);
+                mRecognizer.startListening(i);
             }
             else if(error == mRecognizer.ERROR_NO_MATCH){
                 Toast.makeText(getApplicationContext(),"다시 한 번 말씀해주세요.",Toast.LENGTH_SHORT).show();
                 tts.speak("다시 한 번 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                try {
+                    Thread.sleep(1300);
+                    //mRecognizer.startListening(i);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+                //progressbar.setVisibility(View.GONE);
+                mRecognizer.startListening(i);
 
             }
             else if(error == mRecognizer.ERROR_RECOGNIZER_BUSY){
                 Toast.makeText(getApplicationContext(),"다시 한 번 말씀해주세요.",Toast.LENGTH_SHORT).show(); // 인스턴스가 바쁨
                 tts.speak("다시 한 번 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                try {
+                    Thread.sleep(1300);
+                    //mRecognizer.startListening(i);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+                //progressbar.setVisibility(View.GONE);
+                mRecognizer.startListening(i);
+
             }
-
-
-
-
-
             // TODO Auto-generated method stub
 
         }

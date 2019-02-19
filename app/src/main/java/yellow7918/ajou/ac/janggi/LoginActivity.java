@@ -33,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText et_pw;
     private Button btn_login;
     private Button btn_sign_up;
+    private Button naver_sign_in;
 
     private String email;
 
@@ -55,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
         firebaseAuth = FirebaseAuth.getInstance();
 
         if (firebaseAuth.getCurrentUser() != null) {
@@ -72,6 +74,7 @@ public class LoginActivity extends AppCompatActivity {
             et_id.setText(email);
             et_pw.requestFocus();
         }
+
 
         btn_login = findViewById(R.id.button_sign_in);
         btn_login.setOnClickListener(v -> {
@@ -115,6 +118,11 @@ public class LoginActivity extends AppCompatActivity {
         btn_sign_up = findViewById(R.id.button_sign_up);
         btn_sign_up.setOnClickListener(v -> {
             startActivity(new Intent(this, SignUpActivity.class));
+        });
+
+        naver_sign_in = findViewById(R.id.naver_sign_up);
+        naver_sign_in.setOnClickListener(v -> {
+            startActivity(new Intent(this, Naver_login.class));
         });
 
     }

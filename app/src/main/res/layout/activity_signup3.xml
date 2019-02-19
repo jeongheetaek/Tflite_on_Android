@@ -76,7 +76,9 @@
                 <EditText
                     android:id="@+id/comName"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp" />
+                    android:layout_height="50dp"
+                    android:singleLine="true"/>
+
             </LinearLayout>
 
             <LinearLayout
@@ -96,7 +98,8 @@
                 <EditText
                     android:id="@+id/comNumber"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp" />
+                    android:layout_height="50dp"
+                    android:singleLine="true"/>
             </LinearLayout>
 
             <LinearLayout
@@ -111,12 +114,15 @@
                     android:text="발급기관 :"
                     android:textColor="@color/colorBlue"
                     android:textSize="13dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+
+                    android:inputType="text"/>
 
                 <EditText
                     android:id="@+id/comCEO"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp" />
+                    android:layout_height="50dp"
+                    android:singleLine="true"/>
             </LinearLayout>
 
             <!--

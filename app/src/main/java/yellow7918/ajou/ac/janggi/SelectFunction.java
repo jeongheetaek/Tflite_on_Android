@@ -121,17 +121,6 @@ public class SelectFunction extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        ImageView t = (ImageView) findViewById((R.id.conv5));
-        t.setContentDescription("편의점 상품 찾기");
-        t.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                tts.speak("편의점 상품 찾기 기능을 실행하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
-                Intent intent = new Intent(
-                        getApplicationContext(), Classifi_MainActivity5.class);
-                startActivity(intent);
-            }
-        });
         ImageView w = (ImageView) findViewById((R.id.color));
         w.setContentDescription("색 찾기");
         w.setOnClickListener(new View.OnClickListener() {
@@ -156,9 +145,9 @@ public class SelectFunction extends AppCompatActivity {
         z.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tts.speak("음성인식을 실행하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                tts.speak("음성인식을 실행하겠습니다. 일반, 편의점, 매장, 옷, 색 인식이 가능합니다.", TextToSpeech.QUEUE_FLUSH, null);
                 try {
-                    Thread.sleep(2300);
+                    Thread.sleep(5000);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
                 }
@@ -222,9 +211,9 @@ public class SelectFunction extends AppCompatActivity {
             }else if (mResult.contains("나가기")) {
                 tts.speak("음성인식 기능을 종료합니다.", TextToSpeech.QUEUE_FLUSH, null);
             } else {
-                tts.speak("다시 한 번 정확하게 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                tts.speak("다시 한 번 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
                 try {
-                    Thread.sleep(1500);
+                    Thread.sleep(1300);
                     //mRecognizer.startListening(i);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
@@ -266,22 +255,58 @@ public class SelectFunction extends AppCompatActivity {
             } else if (error == mRecognizer.ERROR_AUDIO) {
                 Toast.makeText(getApplicationContext(), "녹음에러 다시 한 번 말씀해주세요.", Toast.LENGTH_SHORT).show(); //녹음 에러
                 tts.speak("다시 한 번 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                try {
+                    Thread.sleep(1300);
+                    //mRecognizer.startListening(i);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
             } else if (error == mRecognizer.ERROR_SERVER) {
                 Toast.makeText(getApplicationContext(), "서버에러 다시 한 번 말씀해주세요.", Toast.LENGTH_SHORT).show(); //서버 에러
                 tts.speak("다시 한 번 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                try {
+                    Thread.sleep(1300);
+                    //mRecognizer.startListening(i);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
             } else if (error == mRecognizer.ERROR_CLIENT) {
                 Toast.makeText(getApplicationContext(), "클라 다시 한 번 말씀해주세요.", Toast.LENGTH_SHORT).show(); //클라이언트 에러
                 tts.speak("다시 한 번 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                try {
+                    Thread.sleep(1300);
+                    //mRecognizer.startListening(i);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
             } else if (error == mRecognizer.ERROR_SPEECH_TIMEOUT) {
                 Toast.makeText(getApplicationContext(), "다시 한 번 말씀해주세요.", Toast.LENGTH_SHORT).show();
                 tts.speak("다시 한 번 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                try {
+                    Thread.sleep(1300);
+                    //mRecognizer.startListening(i);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
             } else if (error == mRecognizer.ERROR_NO_MATCH) {
                 Toast.makeText(getApplicationContext(), "다시 한 번 말씀해주세요.", Toast.LENGTH_SHORT).show();
                 tts.speak("다시 한 번 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                try {
+                    Thread.sleep(1300);
+                    //mRecognizer.startListening(i);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
 
             } else if (error == mRecognizer.ERROR_RECOGNIZER_BUSY) {
                 Toast.makeText(getApplicationContext(), "다시 한 번 말씀해주세요.", Toast.LENGTH_SHORT).show(); // 인스턴스가 바쁨
                 tts.speak("다시 한 번 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                try {
+                    Thread.sleep(1300);
+                    //mRecognizer.startListening(i);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
             }
 
 

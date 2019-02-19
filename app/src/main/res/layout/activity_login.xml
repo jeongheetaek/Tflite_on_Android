@@ -82,16 +82,38 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/button_sign_in"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="64dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="172dp"
         android:background="#fff"
         android:text="회원가입"
         android:textColor="@color/colorBlue"
         android:textSize="17.5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/naver_sign_up"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_sign_up"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="96dp"
+        android:background="#09ed2f"
+        android:text="네이버로 가입하기"
+        android:textColor="#fff"
+        android:textSize="17.5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
 
     <ProgressBar
         android:id="@+id/progressBar"

@@ -199,7 +199,6 @@ public class SignUpActivity3 extends AppCompatActivity {
                                         @Override
                                         public void onSuccess(Void aVoid) {
                                             startActivity(intent);
-
                                             finish();
                                         }
                                     });

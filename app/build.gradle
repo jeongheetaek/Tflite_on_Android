@@ -9,8 +9,8 @@ android {
         applicationId "yellow7918.ajou.ac.janggi"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 2
-        versionName "1.1"
+        versionCode 3
+        versionName "1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -59,8 +59,14 @@ dependencies {
     //noinspection GradleCompatible
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+//add
+    implementation project(path: ':naveridlogin_android_sdk_4.2.0')
+    implementation 'com.android.support:appcompat-v7:25.3.1'
+    implementation 'com.android.support:support-core-utils:25.3.1'
+    implementation 'com.android.support:customtabs:25.3.1'
+    implementation 'com.android.support:support-v4:25.3.1'
 
-    implementation 'com.android.support:appcompat-v7:28.0.0-beta01'
+    //implementation 'com.android.support:appcompat-v7:28.0.0-beta01'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation 'com.android.support:design:28.0.0-rc01'
 

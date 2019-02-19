@@ -69,15 +69,6 @@
             android:scaleType="fitCenter"
             android:src="@drawable/sub5" />
 
-        <ImageView
-            android:id="@+id/conv5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:baselineAligned="false"
-            android:scaleType="fitCenter"
-            android:src="@drawable/sub3" />
-
 
         <ImageView
             android:id="@+id/color"

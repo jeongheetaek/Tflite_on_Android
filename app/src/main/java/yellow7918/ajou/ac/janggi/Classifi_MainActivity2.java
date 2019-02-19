@@ -41,7 +41,7 @@ public class Classifi_MainActivity2 extends AppCompatActivity {
 
     //private static final String MODEL_PATH = "mobilenet_quant_v1_224.tflite";
     private static final String MODEL_PATH = "mobilenet_quant_v1_224_before.tflite";
-    private static final String LABEL_PATH = "labels_before.txt";
+    private static final String LABEL_PATH = "labels_before2.txt";
     private static final int INPUT_SIZE = 224;
 
     private Classifier classifier;
@@ -108,7 +108,6 @@ public class Classifi_MainActivity2 extends AppCompatActivity {
                 String text = title;
                 Log.d("test", title);
                 mp.pause();
-                //SoundManager.cleanup();
 
 
                 tts.speak(text+"로 인식했습니다.", TextToSpeech.QUEUE_FLUSH, null);
