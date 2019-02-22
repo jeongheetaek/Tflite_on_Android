@@ -61,7 +61,7 @@ public interface Classifier {
                 resultString += title + " ";
             }
             if (confidence != null) {
-                //resultString += String.format("(%.1f%%)\n", confidence * 100.0f);
+                resultString += String.format("(%.1f%%)\n", confidence * 100.0f);
 
             }
             return resultString.trim();

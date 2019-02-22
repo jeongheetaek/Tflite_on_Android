@@ -41,8 +41,10 @@ public class Classifi_MainActivity extends AppCompatActivity {
 
 
     //private static final String MODEL_PATH = "mobilenet_quant_v1_224.tflite`";
-    private static final String MODEL_PATH = "final_app.tflite";
-    private static final String LABEL_PATH = "labels.txt";
+    //private static final String MODEL_PATH = "final_app.tflite";
+    //private static final String LABEL_PATH = "labels.txt";
+    private static final String MODEL_PATH = "conv_all.tflite";
+    private static final String LABEL_PATH = "conv_all.txt";
     //private static final String MODEL_PATH = "tflite_shop_final.tflite";
     //private static final String LABEL_PATH = "shop_labels2.txt";
 
