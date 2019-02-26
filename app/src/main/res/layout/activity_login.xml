@@ -5,7 +5,8 @@
     android:id="@+id/login_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/loginback1">
+    android:background="@drawable/loginback1"
+    android:screenOrientation="portrait">
 
 
     <android.support.design.widget.TextInputLayout

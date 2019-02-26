@@ -26,6 +26,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.nio.channels.SelectableChannel;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -50,7 +52,7 @@ public class SelectActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        setContentView(R.layout.select_main2);
+        setContentView(R.layout.select_main3);
         progressbar = findViewById(R.id.progressBar3);
         tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
@@ -66,8 +68,9 @@ public class SelectActivity extends AppCompatActivity{
 
 
         super .onCreate(savedInstanceState);
-        setContentView(R.layout.select_main2);
+        setContentView(R.layout.select_main3);
         ImageView h=(ImageView)findViewById((R.id.help));
+        Glide.with(this).load(R.drawable.m11).into(h);
         h.setContentDescription("앱 사용 도움말");
         h.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,9 +84,12 @@ public class SelectActivity extends AppCompatActivity{
 
         ImageView b=(ImageView)findViewById((R.id.detectbtn));
         b.setContentDescription("사물인식");
+        Glide.with(this).load(R.drawable.rr1).into(b);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View view) {
+                mRecognizer.stopListening();
+                mRecognizer.destroy();
                 tts.speak("인식 기능을 실행하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
                 Intent intent = new Intent(
                         getApplicationContext(), SelectFunction.class);
@@ -93,9 +99,12 @@ public class SelectActivity extends AppCompatActivity{
         ImageView c=(ImageView)findViewById((R.id.infobtn));
         //Button c = (Button)findViewById(R.id.infobtn);
         c.setContentDescription("장애인 정보 확인");
+        Glide.with(this).load(R.drawable.m15).into(c);
         c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View view) {
+                mRecognizer.stopListening();
+                mRecognizer.destroy();
                 tts.speak("장애인 관련 필요정보를 확인하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
                 Intent intent = new Intent(
                         getApplicationContext(), LoginActivity.class);
@@ -104,11 +113,13 @@ public class SelectActivity extends AppCompatActivity{
         });
         ImageView d=(ImageView)findViewById((R.id.numbtn));
 
-        //Button c = (Button)findViewById(R.id.infobtn);
+        Glide.with(this).load(R.drawable.m14).into(d);
         d.setContentDescription("문서인식");
         d.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View view) {
+                mRecognizer.stopListening();
+                mRecognizer.destroy();
                 tts.speak("문서 인식 기능을 실행하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
                 Intent intent = new Intent(
                         getApplicationContext(), SelectFunction2.class);
@@ -117,10 +128,12 @@ public class SelectActivity extends AppCompatActivity{
         });
         ImageView k=(ImageView)findViewById((R.id.sitbtn));
         k.setContentDescription("상황인식");
-        //Button c = (Button)findViewById(R.id.infobtn);
+        Glide.with(this).load(R.drawable.m16).into(k);
         k.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View view) {
+                mRecognizer.stopListening();
+                mRecognizer.destroy();
                 tts.speak("상황인식 기능은 잠겨있습니다.", TextToSpeech.QUEUE_FLUSH, null);
                 Intent intent = new Intent(
                         getApplicationContext(), SelectActivity.class);
@@ -141,13 +154,14 @@ public class SelectActivity extends AppCompatActivity{
 
         ImageView e=(ImageView)findViewById((R.id.infobttn));
         e.setContentDescription("음성인식");
-        //Button c = (Button)findViewById(R.id.infobtn);
+        Glide.with(this).load(R.drawable.m12).into(e);
+
         e.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (cameraPermission == PackageManager.PERMISSION_GRANTED) {
                     if(count_t==0) {
-                        tts.speak("음성인식을 실행하겠습니다. 사물인식은 사물, 문서인식은 문서, 장애인정보 확인은 정보라고 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                        {tts.speak("음성인식을 실행하겠습니다. 사물인식은 사물, 문서인식은 문서, 장애인정보 확인은 정보라고 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);}
                         progressbar.setVisibility(View.VISIBLE);
                         try {
                             Thread.sleep(6000);
@@ -176,7 +190,7 @@ public class SelectActivity extends AppCompatActivity{
                 {
                     ActivityCompat.requestPermissions( SelectActivity.this, REQUIRED_PERMISSIONS, PERMISSIONS_REQUEST_CODE);
                     if(count_t==0) {
-                        tts.speak("음성인식을 실행하겠습니다. 사물인식은 사물, 문서인식은 문서, 장애인정보 확인은 정보라고 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                        {tts.speak("음성인식을 실행하겠습니다. 사물인식은 사물, 문서인식은 문서, 장애인정보 확인은 정보라고 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);}
                         progressbar.setVisibility(View.VISIBLE);
                         try {
                             Thread.sleep(6000);
@@ -230,38 +244,49 @@ public class SelectActivity extends AppCompatActivity{
                 Intent intent = new Intent(
                         getApplicationContext(), SelectFunction.class);
                 startActivity(intent);
+                mRecognizer.stopListening();
+                mRecognizer.destroy();
             }
             else if(mResult.contains("정보")){
                 tts.speak("장애인관련 필요정보를 확인하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
                 Intent intent = new Intent(
                         getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
+
+                mRecognizer.stopListening();
+                mRecognizer.destroy();
             }
             else if(mResult.contains("문서")){
                 tts.speak("문서인식 기능을 확인하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
                 Intent intent = new Intent(
                         getApplicationContext(), SelectFunction2.class);
                 startActivity(intent);
+                mRecognizer.stopListening();
+                mRecognizer.destroy();
             }
             else if(mResult.contains("상황")){
                 tts.speak("상황인식 기능은 잠겨있습니다.", TextToSpeech.QUEUE_FLUSH, null);
                 Intent intent = new Intent(
                         getApplicationContext(), SelectActivity.class);
                 startActivity(intent);
+                mRecognizer.stopListening();
+                mRecognizer.destroy();
             }
             else if(mResult.contains("취소")){
                 tts.speak("음성인식 기능을 종료합니다.", TextToSpeech.QUEUE_FLUSH, null);
+                mRecognizer.stopListening();
+                mRecognizer.destroy();
             }
             else {
                 tts.speak("다시 한번 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
                 try {
                     Thread.sleep(1300);
-                    //mRecognizer.startListening(i);
+                    mRecognizer.startListening(i);
                 } catch (InterruptedException e1) {
-                    e1.printStackTrace();
+                    mRecognizer.stopListening();
                 }
                 //progressbar.setVisibility(View.GONE);
-                mRecognizer.startListening(i);
+
 
             }
 
@@ -270,6 +295,7 @@ public class SelectActivity extends AppCompatActivity{
         }
 
         @Override
+
         public void onReadyForSpeech(Bundle params) {
             // TODO Auto-generated method stub
 
@@ -304,76 +330,90 @@ public class SelectActivity extends AppCompatActivity{
                 Toast.makeText(getApplicationContext(),"녹음에러 다시 한 번 말씀해주세요.",Toast.LENGTH_SHORT).show(); //녹음 에러
                 tts.speak("다시 한 번 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
                 try {
-                    Thread.sleep(1300);
+                    Thread.sleep(1300);mRecognizer.startListening(i);
                     //mRecognizer.startListening(i);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
+                    mRecognizer.stopListening();
+                    //mRecognizer = null;
                 }
                 //progressbar.setVisibility(View.GONE);
-                mRecognizer.startListening(i);
+
             }
 
             else if(error == mRecognizer.ERROR_SERVER){
                 Toast.makeText(getApplicationContext(),"서버에러 다시 한 번 말씀해주세요.",Toast.LENGTH_SHORT).show(); //서버 에러
-                tts.speak("다시 한 번 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
+                {tts.speak("다시 한 번 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);}
                 try {
-                    Thread.sleep(1300);
+                    Thread.sleep(1300);mRecognizer.startListening(i);
                     //mRecognizer.startListening(i);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
+                    mRecognizer.stopListening();
+                    //mRecognizer = null;
                 }
                 //progressbar.setVisibility(View.GONE);
-                mRecognizer.startListening(i);
+
             }
 
             else if(error == mRecognizer.ERROR_CLIENT){
                 Toast.makeText(getApplicationContext(),"클라 다시 한 번 말씀해주세요.",Toast.LENGTH_SHORT).show(); //클라이언트 에러
                 tts.speak("다시 한 번 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
                 try {
-                    Thread.sleep(1300);
+                    Thread.sleep(1300);mRecognizer.startListening(i);
                     //mRecognizer.startListening(i);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
+                    mRecognizer.stopListening();
+                    //mRecognizer = null;
                 }
                 //progressbar.setVisibility(View.GONE);
-                mRecognizer.startListening(i);
+
             }
             else if(error == mRecognizer.ERROR_SPEECH_TIMEOUT){
                 Toast.makeText(getApplicationContext(),"다시 한 번 말씀해주세요.",Toast.LENGTH_SHORT).show();
                 tts.speak("다시 한 번 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
                 try {
                     Thread.sleep(1300);
+                    mRecognizer.startListening(i);
                     //mRecognizer.startListening(i);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
+                    mRecognizer.stopListening();
+                    //mRecognizer = null;
                 }
                 //progressbar.setVisibility(View.GONE);
-                mRecognizer.startListening(i);
+
             }
             else if(error == mRecognizer.ERROR_NO_MATCH){
                 Toast.makeText(getApplicationContext(),"다시 한 번 말씀해주세요.",Toast.LENGTH_SHORT).show();
                 tts.speak("다시 한 번 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
                 try {
-                    Thread.sleep(1300);
+                    Thread.sleep(1300);mRecognizer.startListening(i);
                     //mRecognizer.startListening(i);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
+                    mRecognizer.stopListening();
+                    //mRecognizer = null;
                 }
                 //progressbar.setVisibility(View.GONE);
-                mRecognizer.startListening(i);
+
 
             }
             else if(error == mRecognizer.ERROR_RECOGNIZER_BUSY){
                 Toast.makeText(getApplicationContext(),"다시 한 번 말씀해주세요.",Toast.LENGTH_SHORT).show(); // 인스턴스가 바쁨
                 tts.speak("다시 한 번 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null);
                 try {
-                    Thread.sleep(1300);
+                    Thread.sleep(1300);mRecognizer.startListening(i);
                     //mRecognizer.startListening(i);
                 } catch (InterruptedException e1) {
+                    mRecognizer.stopListening();
+                    //mRecognizer = null;
                     e1.printStackTrace();
+
                 }
                 //progressbar.setVisibility(View.GONE);
-                mRecognizer.startListening(i);
+
 
             }
             // TODO Auto-generated method stub
@@ -398,4 +438,19 @@ public class SelectActivity extends AppCompatActivity{
 
         }
     };
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        if(tts!=null) {
+            tts.stop();
+            tts.shutdown();
+            tts = null;
+        }
+        if(mRecognizer!=null) {
+            mRecognizer.stopListening();
+            //recognizer = null;
+            mRecognizer.destroy();
+        }
+        //SoundManager.playSound(1,1);
+    }
 }

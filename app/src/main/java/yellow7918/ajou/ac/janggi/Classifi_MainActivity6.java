@@ -33,8 +33,8 @@ public class Classifi_MainActivity6 extends AppCompatActivity {
     private MediaPlayer mp;
 
 
-    private static final String MODEL_PATH = "color2.tflite";
-    private static final String LABEL_PATH = "color_labels.txt";
+    private static final String MODEL_PATH = "toy_all.tflite";
+    private static final String LABEL_PATH = "toy.txt";
 
     private static final int INPUT_SIZE = 224;
 
@@ -97,18 +97,18 @@ public class Classifi_MainActivity6 extends AppCompatActivity {
                 Log.d("test", title);
                 //SoundManager.cleanup();
                 mp.pause();
-                if(text.contains("blue")){
-                    text = "파랑색";
-                }else if(text.contains("green")){
-                    text = "초록색";
-                }else if(text.contains("orange")){
-                    text = "주황색";
-                }else if(text.contains("purple")){
-                    text = "보라색";
-                }else if(text.contains("red")){
-                    text = "빨강색";
-                }else if(text.contains("yellow")) {
-                    text = "노란색";
+                if(text.contains("bbororo")){
+                    text = "뽀로로";
+                }else if(text.contains("kong")){
+                    text = "콩순이";
+                }else if(text.contains("pinkpong")){
+                    text = "핑크퐁";
+                }else if(text.contains("robocar")){
+                    text = "로보카폴리";
+                }else if(text.contains("shark")){
+                    text = "상어가족";
+                }else if(text.contains("tayo")) {
+                    text = "타요";
                 }
                 tts.speak(text+"로 인식했습니다.", TextToSpeech.QUEUE_FLUSH, null);
 

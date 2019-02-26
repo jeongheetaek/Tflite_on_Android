@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:largeHeap="true"
     android:hardwareAccelerated="false"
+    android:screenOrientation="portrait"
     tools:context=".OutletPolicy">
 
     <ImageView

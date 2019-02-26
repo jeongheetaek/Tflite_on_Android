@@ -121,10 +121,10 @@ public class TabFragment extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setContentDescription("문서찾기");
-        fab.setOnClickListener(view -> {
-            fab.hide();
+        //FloatingActionButton fab = findViewById(R.id.fab);
+        //fab.setContentDescription("문서찾기");
+        //fab.setOnClickListener(view -> {
+            //fab.hide();
             AlertDialog.Builder builder = new AlertDialog.Builder(TabFragment.this);
             builder
                     .setMessage(R.string.dialog_select_prompt)
@@ -132,7 +132,7 @@ public class TabFragment extends AppCompatActivity {
                     .setNegativeButton(R.string.dialog_select_camera, (dialog, which) -> startCamera());
             builder.create().show();
 
-        });
+        //});
 
         mImageDetails = findViewById(R.id.image_details);
         //mMainImage = findViewById(R.id.main_image);
@@ -376,8 +376,8 @@ public class TabFragment extends AppCompatActivity {
 
     private static String convertResponseToString(BatchAnnotateImagesResponse response) {
 
-        message = new StringBuilder("숫자를 인식했습니다.\n\n");
-
+        //message = new StringBuilder("숫자를 인식했습니다.\n\n");
+        tts.speak("숫자를 인식했습니다.",TextToSpeech.QUEUE_FLUSH, null);
         List<EntityAnnotation> labels = response.getResponses().get(0).getTextAnnotations();
         if (labels != null) {
 

@@ -10,6 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="TabFragment2"
+    android:screenOrientation="portrait"
     tools:showIn="@layout/ocr_test2">
 
     <ScrollView

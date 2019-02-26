@@ -1,0 +1,84 @@
+
+<ScrollView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".SignUpActivity">
+
+        <ProgressBar
+            android:id="@+id/progressBar3"
+            android:layout_width="250dp"
+            android:layout_height="360dp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/help"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:adjustViewBounds="true"
+            android:baselineAligned="false"
+            android:scaleType="fitXY"
+            />
+
+
+        <ImageView
+            android:id="@+id/infobttn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:adjustViewBounds="true"
+            android:baselineAligned="false"
+            android:scaleType="fitXY"
+            />
+
+        <ImageView
+            android:id="@+id/detectbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:adjustViewBounds="true"
+            android:baselineAligned="false"
+            android:scaleType="fitXY"
+            />
+
+        <ImageView
+            android:id="@+id/numbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:adjustViewBounds="true"
+            android:baselineAligned="false"
+            android:scaleType="fitXY"
+            />
+
+        <ImageView
+            android:id="@+id/infobtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:adjustViewBounds="true"
+            android:baselineAligned="false"
+            android:scaleType="fitXY"
+            />
+
+
+        <ImageView
+            android:id="@+id/sitbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:adjustViewBounds="true"
+            android:baselineAligned="false"
+            android:scaleType="fitXY"
+            />
+    </LinearLayout>
+</ScrollView>

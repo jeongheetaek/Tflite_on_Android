@@ -24,7 +24,7 @@
     <string name="image_preview_header">Preview:</string>
     <string name="loading_message">문서를 인식중입니다. 잠시만 기다려주세요.</string>
 
-    <string name="dialog_select_prompt">문서를 가져오세요.</string>
+    <string name="dialog_select_prompt">문서를 선택하세요.</string>
     <string name="dialog_select_camera">사진 촬영</string>
     <string name="dialog_select_gallery">사진 앨범</string>
 

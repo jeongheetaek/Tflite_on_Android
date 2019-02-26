@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:largeHeap="true"
     android:hardwareAccelerated="false"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:screenOrientation="portrait">
 
 
     <ImageView

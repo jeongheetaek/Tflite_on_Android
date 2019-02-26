@@ -9,5 +9,6 @@
     android:layout_marginTop="2dp"
     android:ellipsize="end"
     android:maxLines="1"
-    android:singleLine="true" />
+    android:singleLine="true"
+    android:screenOrientation="portrait"/>
 

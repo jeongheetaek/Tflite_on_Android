@@ -6,7 +6,8 @@
     android:layout_marginBottom="4dp"
     android:largeHeap="true"
     android:hardwareAccelerated="false"
-    android:layout_marginTop="4dp">
+    android:layout_marginTop="4dp"
+    android:screenOrientation="portrait">
 
     <TextView
         android:id="@+id/detail_category2"

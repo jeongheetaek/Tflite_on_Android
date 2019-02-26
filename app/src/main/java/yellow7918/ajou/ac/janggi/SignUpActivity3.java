@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.media.AudioManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -102,15 +103,25 @@ public class SignUpActivity3 extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
+    TextToSpeech tts;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
+        tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status != AudioManager.ERROR) {
+                    // 언어를 선택한다.
+                    tts.setLanguage(Locale.KOREAN);
+                }
+            }
+        });
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup3);
         progressBar = findViewById(R.id.progressBar);
         mAuth = FirebaseAuth.getInstance();
-
+        tts.speak("복지카드를 등록해주세요. 인식을 통해 정보를 등록하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
         if (getIntent() != null) {
             email = getIntent().getStringExtra("email");
             userName = getIntent().getStringExtra("name");
@@ -569,6 +580,15 @@ public class SignUpActivity3 extends AppCompatActivity {
         return result;
 
 
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (tts != null) {
+            tts.stop();
+            tts.shutdown();
+            tts = null;
+        }
     }
 }
 
