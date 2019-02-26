@@ -24,6 +24,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 import static android.media.AudioManager.ERROR;
+import static yellow7918.ajou.ac.janggi.Classifier.Recognition.confidence;
 import static yellow7918.ajou.ac.janggi.Classifier.Recognition.title;
 
 public class Classifi_MainActivity6 extends AppCompatActivity {
@@ -31,7 +32,13 @@ public class Classifi_MainActivity6 extends AppCompatActivity {
     EditText inputtext;
     Button button;
     private MediaPlayer mp;
-
+    private MediaPlayer mp1;
+    private MediaPlayer mp2;
+    private MediaPlayer mp3;
+    private MediaPlayer mp4;
+    private MediaPlayer mp5;
+    private MediaPlayer mp6;
+    private MediaPlayer mp_real;
 
     private static final String MODEL_PATH = "toy_all.tflite";
     private static final String LABEL_PATH = "toy.txt";
@@ -45,10 +52,17 @@ public class Classifi_MainActivity6 extends AppCompatActivity {
     private Button btnDetectObject, btnToggleCamera, speech;
     private ImageView imageViewResult;
     private CameraView cameraView;
-
+    private int k=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mp = MediaPlayer.create(this, R.raw.tick);
+        mp1 = MediaPlayer.create(this, R.raw.bororo);
+        mp2 = MediaPlayer.create(this, R.raw.kong);
+        mp3 = MediaPlayer.create(this, R.raw.pink);
+        mp4 = MediaPlayer.create(this, R.raw.robot);
+        mp5 = MediaPlayer.create(this, R.raw.shark);
+        mp6 = MediaPlayer.create(this, R.raw.tayo);
+        mp = MediaPlayer.create(this, R.raw.tayo);
 
 
         tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
@@ -94,24 +108,42 @@ public class Classifi_MainActivity6 extends AppCompatActivity {
 
                 final List<Classifier.Recognition> results = classifier.recognizeImage(bitmap);
                 String text = title;
+                Float num = confidence;
                 Log.d("test", title);
                 //SoundManager.cleanup();
                 mp.pause();
                 if(text.contains("bbororo")){
                     text = "뽀로로";
+                    mp_real = mp1;
                 }else if(text.contains("kong")){
                     text = "콩순이";
+                    mp_real = mp2;
                 }else if(text.contains("pinkpong")){
                     text = "핑크퐁";
+                    mp_real = mp3;
                 }else if(text.contains("robocar")){
                     text = "로보카폴리";
+                    mp_real = mp4;
                 }else if(text.contains("shark")){
                     text = "상어가족";
+                    mp_real = mp5;
                 }else if(text.contains("tayo")) {
                     text = "타요";
+                    mp_real = mp6;
                 }
-                tts.speak(text+"로 인식했습니다.", TextToSpeech.QUEUE_FLUSH, null);
-
+                if(num > 0.6) {
+                    //tts.speak(results+"로 인식했습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                    tts.speak(text+"로 인식했습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                    mp_real.start();
+                }
+                else
+                    tts.speak("확실하지않습니다. 다시 인식해주세요.", TextToSpeech.QUEUE_FLUSH, null);
             }
 
             @Override

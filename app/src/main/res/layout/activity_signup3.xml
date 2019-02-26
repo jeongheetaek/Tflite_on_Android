@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUpActivity3"
-    android:screenOrientation="portrait">
+    tools:context=".SignUpActivity3">
 
     <LinearLayout
         android:layout_width="match_parent"

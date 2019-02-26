@@ -26,6 +26,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 import static android.media.AudioManager.ERROR;
+import static yellow7918.ajou.ac.janggi.Classifier.Recognition.confidence;
 import static yellow7918.ajou.ac.janggi.Classifier.Recognition.title;
 
 public class Classifi_MainActivity4 extends AppCompatActivity {
@@ -98,6 +99,7 @@ public class Classifi_MainActivity4 extends AppCompatActivity {
 
                 final List<Classifier.Recognition> results = classifier.recognizeImage(bitmap);
                 String text = title;
+                Float num = confidence;
                 Log.d("test", title);
                 //SoundManager.cleanup();
                 mp.pause();
@@ -208,8 +210,12 @@ public class Classifi_MainActivity4 extends AppCompatActivity {
                 else if(text.contains("dejawa")){
                     text = "깔끔한 색의 반팔티";
                 }
-
-                tts.speak(text+"로 인식했습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                if(num > 0.6) {
+                    //tts.speak(results+"로 인식했습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                    tts.speak(text+"로 인식했습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                }
+                else
+                    tts.speak("확실하지않습니다.  다시 인식해주세요.", TextToSpeech.QUEUE_FLUSH, null);
 
                 //textViewResult.setText(results.toString());
             }

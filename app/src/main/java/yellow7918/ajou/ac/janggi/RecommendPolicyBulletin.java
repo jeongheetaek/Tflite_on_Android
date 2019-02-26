@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 public class RecommendPolicyBulletin extends android.support.v4.app.Fragment {
     private FirebaseAuth firebaseAuth;
     private User u;
@@ -82,7 +83,16 @@ public class RecommendPolicyBulletin extends android.support.v4.app.Fragment {
                                 info.setTitle((String) map.get("title"));
                                 info.setWriter((String) map.get("writer"));
 
+                                if(!(info.haveKeyWord("용인") || info.haveKeyWord("시각")))
+                                    continue;
 
+                                else {
+                                    List<HashMap<String, String>> file = (List<HashMap<String, String>>) map.get("files");
+                                    info.setFiles(file);
+
+                                    infoList.add(info);
+                                }
+                                /*
                                 for (int i = 0; i < tag.length; i++) {
                                     if ((u.getTag().get(i) && info.haveKeyWord(tag[i])) || (u.getKeyword().length() > 0 && info.haveKeyWord(u.getKeyword()))) {
                                         List<HashMap<String, String>> file = (List<HashMap<String, String>>) map.get("files");
@@ -91,7 +101,7 @@ public class RecommendPolicyBulletin extends android.support.v4.app.Fragment {
                                         infoList.add(info);
                                         break;
                                     }
-                                }
+                                }*/
                             }
                         }
 

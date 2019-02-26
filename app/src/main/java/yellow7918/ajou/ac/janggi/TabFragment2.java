@@ -124,7 +124,7 @@ public class TabFragment2 extends AppCompatActivity {
         //FloatingActionButton fab = findViewById(R.id.fab);
         //fab.setContentDescription("문서찾기");
         //fab.setOnClickListener(view -> {
-          //  fab.hide();
+        //    fab.hide();
             AlertDialog.Builder builder = new AlertDialog.Builder(TabFragment2.this);
             builder
                     .setMessage(R.string.dialog_select_prompt)
@@ -373,7 +373,7 @@ public class TabFragment2 extends AppCompatActivity {
 
     private static String convertResponseToString(BatchAnnotateImagesResponse response) {
 
-        //message = new StringBuilder("글자를 인식했습니다.\n\n");
+        message = new StringBuilder(" \n\n");
         tts.speak("글자를 인식했습니다.",TextToSpeech.QUEUE_FLUSH, null);
         List<EntityAnnotation> labels = response.getResponses().get(0).getTextAnnotations();
         if (labels != null) {

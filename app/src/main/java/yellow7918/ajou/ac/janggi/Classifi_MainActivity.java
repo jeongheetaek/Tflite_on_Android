@@ -31,6 +31,7 @@ import java.util.concurrent.Executors;
 import static android.media.AudioManager.ERROR;
 import static java.security.AccessController.getContext;
 
+import static yellow7918.ajou.ac.janggi.Classifier.Recognition.confidence;
 import static yellow7918.ajou.ac.janggi.Classifier.Recognition.title;
 public class Classifi_MainActivity extends AppCompatActivity {
 
@@ -106,90 +107,177 @@ public class Classifi_MainActivity extends AppCompatActivity {
 
                 final List<Classifier.Recognition> results = classifier.recognizeImage(bitmap);
                 String text = title;
+                Float num = confidence;
                 Log.d("test", title);
                 //SoundManager.cleanup();
                 mp.pause();
-                if(text.contains("masisneunmilk")) {
-                    text = "마시는우유";
-                }
-                else if(text.contains("mikis")){
-                    text = "밀키스";
-                }
-                else if(text.contains("mongshell")){
-                    text = "몽쉘";
-                }
-                else if(text.contains("ansungtangmyun")){
-                    text = "안성탕면";
-                }
-                else if(text.contains("cola")){
-                    text = "코카콜라";
-                }
-                else if(text.contains("chocosonge")){
-                    text = "초코송이";
-                }
-                else if(text.contains("chocoemong")){
-                    text = "초코에몽";
-                }
-                else if(text.contains("chilseong")){
-                    text = "칠성사이다";
-                }
-                else if(text.contains("chicchoc")){
-                    text = "칙촉";
-                }
-                else if(text.contains("buldarkbog")){
-                    text = "불닭볶음면";
-                }
-                else if(text.contains("bananamilk")){
-                    text = "바나나우유";
-                }else if(text.contains("trevi")){
-                    text = "트레비";
-                }
-                else if(text.contains("zzawang")){
+                if(text.contains("zzawang")) {
                     text = "짜왕";
                 }
-                else if(text.contains("shinramen")){
-                    text = "신라면";
+                else if(text.contains("anseong")){
+                    text = "안성탕면";
+                }
+                else if(text.contains("zzapagette")){
+                    text = "짜파게티";
+                }
+                else if(text.contains("yulramen")){
+                    text = "열라면";
+                }
+                else if(text.contains("yangparing")){
+                    text = "양파링";
+                }
+                else if(text.contains("wellchis")){
+                    text = "웰치스";
+                }
+                else if(text.contains("tumsaeramen")){
+                    text = "틈새라면";
+                }
+                else if(text.contains("tuigimudong")){
+                    text = "튀김우동";
+                }
+                else if(text.contains("tropicanaspakling")){
+                    text = "트로피카나스파클링";
                 }
                 else if(text.contains("sprite")){
                     text = "스프라이트";
                 }
-                else if(text.contains("toreta")){
-                    text = "토레타";
+                else if(text.contains("snackmyun")){
+                    text = "스낵면";
                 }
-                else if(text.contains("welchis")){
-                    text = "웰치스";
+                else if(text.contains("bananakick")){
+                    text = "바나나킥";
+                }else if(text.contains("bbabbaro")){
+                    text = "빼빼로";
                 }
-                else if(text.contains("seoulmilk")){
-                    text = "서울우유";
+                else if(text.contains("buldarkboggeam")){
+                    text = "불닭볶음면";
                 }
-                else if(text.contains("pocarisweat")){
-                    text = "포카리스웨트";
+                else if(text.contains("butterwapple")){
+                    text = "버터와플";
                 }
-                else if(text.contains("pocachip")){
-                    text = "포카칩";
+                else if(text.contains("chamggeramen")){
+                    text = "참깨라면";
                 }
-                else if(text.contains("lottebaebaero")){
-                    text = "롯데빼빼로";
+                else if(text.contains("cheetos")){
+                    text = "치토스";
                 }
-                else if(text.contains("jorypong")){
-                    text = "조리퐁";
+                else if(text.contains("chilseong")){
+                    text = "칠성사이다";
                 }
-                else if(text.contains("hushmilk")){
-                    text = "허쉬우유";
+                else if(text.contains("chocopie")){
+                    text = "초코파이";
                 }
-                else if(text.contains("homrunball")){
-                    text = "홈러본";
+                else if(text.contains("cocacola")){
+                    text = "코카콜라";
                 }
-                else if(text.contains("galbae")){
-                    text = "갈아만든배";
+                else if(text.contains("conchip")){
+                    text = "콘칩";
+                }
+                else if(text.contains("crownsando")){
+                    text = "크라운산도";
                 }
                 else if(text.contains("demisoda")){
                     text = "데미소다";
                 }
-                else if(text.contains("dejawa")){
-                    text = "데자와";
+                else if(text.contains("drpepper")){
+                    text = "닥터페퍼";
                 }
-                tts.speak(text+"로 인식했습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                else if(text.contains("fanta")){
+                    text = "판타";
+                }
+                else if(text.contains("ggocalcorn")){
+                    text = "꼬깔콘";
+                }
+                else if(text.contains("ggugawbaegi")){
+                    text = "꽈배기";
+                }
+                else if(text.contains("goraebob")){
+                    text = "고래밥";
+                }
+                else if(text.contains("homerunball")){
+                    text = "홈런볼";
+                }
+                else if(text.contains("hotsitx")){
+                    text = "핫식스";
+                }
+                else if(text.contains("jinjjanbbong")){
+                    text = "진짬뽕";
+                }
+                else if(text.contains("jinramen")){
+                    text = "진라면";
+                }
+                else if(text.contains("joriphong")){
+                    text = "조리퐁";
+                }
+                else if(text.contains("letsbe")){
+                    text = "레스비";
+                }
+                else if(text.contains("matdongsan")){
+                    text = "맛동산";
+                }
+                else if(text.contains("milkis")){
+                    text = "밀키스";
+                }
+                else if(text.contains("miyeokgoog")){
+                    text = "미역국";
+                }
+                else if(text.contains("moopama")){
+                    text = "무파마";
+                }
+                else if(text.contains("mounteendue")){
+                    text = "마운틴듀";
+                }
+                else if(text.contains("ohgamja")){
+                    text = "오감자";
+                }
+                else if(text.contains("ohyes")){
+                    text = "오예스";
+                }
+                else if(text.contains("ojinguddangkong")){
+                    text = "오징어땅콩";
+                }
+                else if(text.contains("ojingujjambbong")){
+                    text = "오징어짬뽕";
+                }
+                else if(text.contains("paldo")){
+                    text = "팔도비빔면";
+                }
+                else if(text.contains("pepsi")){
+                    text = "펩시콜라";
+                }
+                else if(text.contains("pocachip")){
+                    text = "포카칩";
+                }
+                else if(text.contains("pocarisweat")){
+                    text = "포카리스웨이트";
+                }
+                else if(text.contains("postic")){
+                    text = "포스틱";
+                }
+                else if(text.contains("powerade")){
+                    text = "파워에이드";
+                }
+                else if(text.contains("pringles")){
+                    text = "프링글스";
+                }
+                else if(text.contains("saewooggang")){
+                    text = "새우깡";
+                }
+                else if(text.contains("samyang")){
+                    text = "삼양라면";
+                }
+                else if(text.contains("shinrame")){
+                    text = "신라면";
+                }
+                else if(text.contains("sickhye")){
+                    text = "식혜";
+                }
+                if(num > 0.6) {
+                    //tts.speak(results+"로 인식했습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                    tts.speak(text+"로 인식했습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                }
+                else
+                    tts.speak("확실하지않습니다.  다시 인식해주세요.", TextToSpeech.QUEUE_FLUSH, null);
                 /*
                 speech.setOnClickListener(new View.OnClickListener() {
                     @Override

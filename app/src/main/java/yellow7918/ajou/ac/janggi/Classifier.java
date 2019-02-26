@@ -24,7 +24,6 @@ public interface Classifier {
          * the object.
          */
         private final String id;
-
         /**
          * Display name for the recognition.
          */
@@ -33,8 +32,9 @@ public interface Classifier {
         /**
          * A sortable score for how good the recognition is relative to others. Higher should be better.
          */
-        private final Float confidence;
+        public static Float confidence;
         private TextToSpeech tts;
+
         public Recognition(
                 final String id, final String title, final Float confidence) {
             this.id = id;
@@ -65,6 +65,17 @@ public interface Classifier {
 
             }
             return resultString.trim();
+            /*
+            if (confidence * 100.0f < 60.0) {
+                title = "확실하지않습니다.";
+                return "확실하지않습니다.";
+            }
+            else
+                {
+                resultString = "확실하지 않습니다.";
+                return resultString.trim();
+            }*/
+
         }
     }
 

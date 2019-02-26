@@ -121,7 +121,7 @@ public class SignUpActivity3 extends AppCompatActivity {
         setContentView(R.layout.activity_signup3);
         progressBar = findViewById(R.id.progressBar);
         mAuth = FirebaseAuth.getInstance();
-        tts.speak("복지카드를 등록해주세요. 인식을 통해 정보를 등록하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
+
         if (getIntent() != null) {
             email = getIntent().getStringExtra("email");
             userName = getIntent().getStringExtra("name");
@@ -145,7 +145,7 @@ public class SignUpActivity3 extends AppCompatActivity {
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                tts.speak("복지카드를 등록해주세요. 인식을 통해 정보를 등록하겠습니다.", TextToSpeech.QUEUE_FLUSH, null);
                 new AlertDialog.Builder(SignUpActivity3.this)
                         .setTitle("복지카드 가져오기")
                         .setPositiveButton("사진촬영", new DialogInterface.OnClickListener() {
@@ -177,7 +177,6 @@ public class SignUpActivity3 extends AppCompatActivity {
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (comName.getText().toString().length() == 0 || comNumber.getText().toString().length() == 0 || comCEO.getText().toString().length() == 0) {
                     Toast.makeText(SignUpActivity3.this, "정보를 입력해주세요.", Toast.LENGTH_SHORT).show();
                     return;
@@ -518,63 +517,77 @@ public class SignUpActivity3 extends AppCompatActivity {
     //문자열 처리
     private static String[] pickInfo(String original) {
 
-        //String target[] = {"업 체 명 :", "사업자등록번호 :", "대 표 자 명 :", "주\n"};//,"주\n소 :"
-        String target[] = {"체명:", "번호:", "자명:", "주\n"};//,"주\n소 :"
+
         int[] target_num = new int[4];
         target_num[0]=-1;target_num[1]=0;target_num[2]=0;
         String result[] = new String[4];
+        result[0]="";
+        result[1]="";
+        result[2]="";
         int confirm = 0;
-        String Textviewer[] = new String[4];
         if(original.contains("복지카드"))
         {
-            target_num[0]=original.indexOf("유효기한");
-            if(target_num[0] != -1) {
-                result[0] = original.substring(target_num[0] + 7, target_num[0] + 7 + 11);
-                result[0] = result[0].replace("null", "");
-                Log.d("Log", result[0]);
-            }
-            else {
-                result[0] = "잘못된 정보입니다.";
-                //tts.speak("내용을 찾지못했습니다.", TextToSpeech.QUEUE_FLUSH, null);
-                confirm = 1;
-                //Toast.makeText("내용을 찾지못했습니다.", Toast.LENGTH_SHORT).show();
-                return result;
+            if(original.contains("유효")) {
+                target_num[0] = original.indexOf("유효");
+                if (target_num[0] != -1) {
+                    result[0] = original.substring(target_num[0] + 7, target_num[0] + 7 + 11);
+                    result[0] = result[0].replace("null", "");
+                    Log.d("Log", result[0]);
+                } else {
+                    result[0] = "내용을 찾지못했습니다";
+                    //tts.speak("내용을 찾지못했습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                    confirm = 1;
+                    //Toast.makeText("내용을 찾지못했습니다.", Toast.LENGTH_SHORT).show();
+                    return result;
 
-            }
-
-            target_num[1]=original.indexOf("증은");
-            if(target_num[1] != 0){
-                result[1] = original.substring(target_num[1]-9, target_num[1]-3);
-                result[1] = result[1].replace("null", "");
-                Log.d("Log", result[1]);
+                }
             }
             else{
-                result[1] = "잘못된 정보입니다.";
-                //tts.speak("내용을 찾지못했습니다.", TextToSpeech.QUEUE_FLUSH, null);
-                confirm = 1;
-                //Toast.makeText(this,"내용을 찾지못했습니다.", Toast.LENGTH_SHORT).show();
-                return result;
+                result[0] = "내용을 찾지못했습니다";
+                //return result;
             }
-
-            target_num[2]=original.indexOf("시장");
-            if(target_num[2] != 0) {
-                result[2] = original.substring(target_num[2] - 2, target_num[2] + 1);
-                result[2] = result[2].replace("null", "");
-                Log.d("Log", result[2]);
+            if(original.contains("장애")) {
+                target_num[1] = original.indexOf("장애");
+                if (target_num[1] != 0) {
+                    result[1] = original.substring(target_num[1] - 2, target_num[1] + 2);
+                    result[1] = result[1].replace("null", "");
+                    Log.d("Log", result[1]);
+                } else {
+                    result[1] = "내용을 찾지못했습니다.";
+                    //tts.speak("내용을 찾지못했습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                    confirm = 1;
+                    //Toast.makeText(this,"내용을 찾지못했습니다.", Toast.LENGTH_SHORT).show();
+                    return result;
+                }
             }
-            else {
-                result[2] = "잘못된 정보입니다.";
-                //tts.speak("내용을 찾지못했습니다.", TextToSpeech.QUEUE_FLUSH, null);
-                confirm = 1;
-                return result;
-                //Toast.makeText(this,"내용을 찾지못했습니다.", Toast.LENGTH_SHORT).show();
+            else{
+                result[1]="내용을 찾지못했습니다.";
+                //return result;
+            }
+            if(original.contains("시장")) {
+                target_num[2] = original.indexOf("시장");
+                if (target_num[2] != 0) {
+                    result[2] = original.substring(target_num[2] - 2, target_num[2] + 1);
+                    result[2] = result[2].replace("null", "");
+                    Log.d("Log", result[2]);
+                } else {
+                    result[2] = "내용을 찾지못했습니다";
+                    //tts.speak("내용을 찾지못했습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                    confirm = 1;
+                    return result;
+                    //Toast.makeText(this,"내용을 찾지못했습니다.", Toast.LENGTH_SHORT).show();
+                }
+            }
+            else{
+                result[2]="내용을 찾지못했습니다";
+                //return result;
             }
         }
         else {
             //tts.speak("내용을 찾지못했습니다.", TextToSpeech.QUEUE_FLUSH, null);
-            result[0] = "잘못된 정보입니다.";
-            result[1] = "잘못된 정보입니다.";
-            result[2] = "잘못된 정보입니다.";
+            result[0] = "내용을 찾지못했습니다";
+            result[1] = "내용을 찾지못했습니다";
+            result[2] = "내용을 찾지못했습니다";
             Log.d("ERROR :: ", "치명적인 오류가 발생했습니다. 개발자에게 문의하시기 바랍니다.");
         }
         return result;
