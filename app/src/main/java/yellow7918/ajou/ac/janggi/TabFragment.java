@@ -58,7 +58,7 @@ import static yellow7918.ajou.ac.janggi.Classifier.Recognition.title;
 public class TabFragment extends AppCompatActivity {
 
 
-    private static final String CLOUD_VISION_API_KEY = "AIzaSyAWe7xFMmM1m10S56xwmp_eSQ2jRX3rAJg";
+    private static final String CLOUD_VISION_API_KEY = "";
     public static final String FILE_NAME = "temp.jpg";
     private static final String ANDROID_CERT_HEADER = "X-Android-Cert";
     private static final String ANDROID_PACKAGE_HEADER = "X-Android-Package";
