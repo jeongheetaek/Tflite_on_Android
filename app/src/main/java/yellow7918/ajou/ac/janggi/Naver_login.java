@@ -24,9 +24,9 @@ public class Naver_login extends AppCompatActivity implements View.OnClickListen
     private static OAuthLogin naverLoginInstance;
     Button btnGetApi, btnLogout;
 
-    static final String CLIENT_ID = "lm6zjO8TqfaWDiy3RctJ";
-    static final String CLIENT_SECRET = "6oPsj7zd5N";
-    static final String CLIENT_NAME = "chung1876_translation";
+    static final String CLIENT_ID = "";
+    static final String CLIENT_SECRET = "";
+    static final String CLIENT_NAME = "";
 
     TextView tv_mail;
     TextView tv_name;
